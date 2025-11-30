@@ -60,16 +60,28 @@ export interface AuthData {
 //   Authorization: Basic base64("phone:password")
 
 export const auth = authHandler<AuthParams, AuthData>(async (data) => {
+  // If no Authorization header provided, allow access for this PoC
   if (!data.authorization) {
-    throw APIError.unauthenticated("Missing Authorization header");
+    const defaultUser = sampleUsers[0];
+    return {
+      userID: defaultUser.phone,
+      name: defaultUser.name,
+      phone: defaultUser.phone,
+      role: defaultUser.role,
+    };
   }
 
+  // If an Authorization header is present, still support Basic auth
   if (!data.authorization.startsWith("Basic ")) {
     throw APIError.unauthenticated("Invalid auth format. Use Basic auth.");
   }
 
   const base64Credentials = data.authorization.replace("Basic ", "");
-  const decoded = Buffer.from(base64Credentials, "base64").toString("utf8");
+  const decoded = (globalThis as any).Buffer
+    ? (globalThis as any).Buffer.from(base64Credentials, "base64").toString("utf8")
+    : (globalThis as any).atob
+      ? (globalThis as any).atob(base64Credentials)
+      : (() => { throw APIError.unauthenticated("Base64 decode not available"); })();
 
   const [phone, password] = decoded.split(":");
 

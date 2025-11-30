@@ -20,11 +20,7 @@ import type { CurrentUser } from "../App";
 import { translations } from "../lib/translations";
 import { useAuth } from "@/context/auth";
 
-interface LoginPageProps {
-  onLogin: (user: CurrentUser) => void;
-}
-
-export function LoginPage({ onLogin }: LoginPageProps) {
+export function LoginPage() {
   const [lang, setLang] = useState<"en" | "am">("en");
   const [role, setRole] = useState<"manager" | "finance" | "store">("manager");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -36,28 +32,19 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     getSavedLogin();
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      onLogin({
-        id: Date.now(),
-        name: user.name,
-        phoneNumber: user.phone,
-        role: user.role,
-      });
-    }
-  }, [user]);
-
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const loginUser = {
-      name,
+      password,
       phoneNumber,
       role,
     };
-    if (login(loginUser.name, loginUser.phoneNumber, loginUser.role)) {
-      onLogin({ ...loginUser, id: Date.now() });
+    console.log("Attempting login with", loginUser);
+    if (login(loginUser.phoneNumber, loginUser.password, loginUser.role)) {
+      alert(`Logged in as ${loginUser.role}`);
+      window.location.href = '/dashboard';
     } else {
-      alert(`Invalid credentials for ${loginUser.name}`);
+      alert(`Invalid credentials for ${loginUser.phoneNumber}`);
     }
   };
 

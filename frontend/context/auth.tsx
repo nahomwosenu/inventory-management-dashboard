@@ -39,15 +39,22 @@ export const useAuth = () => {
     setUser(user);
   };
 
-  const login = (email: string, password: string, role: string) => {
-    if (!email || !password || !role) return false;
+  const getUserToken = () => {
+    if (!user) return undefined;
+    // return base64 of phone:password for Basic auth
+    return btoa(`${user.phone}:${user.password}`);
+  }
+
+  const login = (phone: string, password: string, role: string) => {
+    if (!phone || !password || !role) return false;
     const findUser = sampleUsers.find(
       (user) =>
-        user.email === email && user.password === password && user.role === role
+        user.phone === phone && user.password === password && user.role === role
     );
     if (!findUser) return false;
     saveLogin(findUser);
-    localStorage.setItem("user", JSON.stringify({ email, password, role }));
+    // Save full user so the app can restore state including name/email
+    localStorage.setItem("user", JSON.stringify(findUser));
     return true;
   };
 
@@ -68,5 +75,5 @@ export const useAuth = () => {
     getSavedLogin();
   }, []);
 
-  return { user, login, logout, getSavedLogin };
+  return { user, login, logout, getSavedLogin, getUserToken };
 };

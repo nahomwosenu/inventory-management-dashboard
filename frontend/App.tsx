@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { ClerkProvider } from '@clerk/clerk-react';
 import { Toaster } from "@/components/ui/toaster";
 import { Dashboard } from "./components/Dashboard";
 import { LoginPage } from "./components/LoginPage";
+import { useAuth } from "./context/auth";
 
 const PUBLISHABLE_KEY = "pk_test_bWFnaWNhbC1tb25hcmNoLTE3LmNsZXJrLmFjY291bnRzLmRldiQ";
 
@@ -14,15 +14,15 @@ export interface CurrentUser {
 }
 
 function AppInner() {
-  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
+  const { user: currentUser, logout } = useAuth();
 
   if (!currentUser) {
-    return <LoginPage onLogin={setCurrentUser} />;
+    return <LoginPage />;
   }
 
   return (
     <div className="dark min-h-screen bg-background">
-      <Dashboard currentUser={currentUser} onLogout={() => setCurrentUser(null)} />
+      <Dashboard currentUser={currentUser} onLogout={() => logout()} />
       <Toaster />
     </div>
   );
@@ -30,8 +30,6 @@ function AppInner() {
 
 export default function App() {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <AppInner />
-    </ClerkProvider>
+    <AppInner />
   );
 }
