@@ -1,15 +1,41 @@
 import { useState, useEffect } from "react";
 import backend from "~backend/client";
 import type { Order } from "~backend/order/create";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { useToast } from "@/components/ui/use-toast";
 import { Plus, Phone } from "lucide-react";
 
@@ -74,34 +100,43 @@ export default function OrderManagement() {
     setLoading(true);
 
     try {
-      await backend.order.create({
-        customer_name: formData.customer_name,
-        customer_email: formData.customer_email,
-        customer_phone: formData.customer_phone,
-        customer_address: formData.customer_address,
-        item_id: parseInt(formData.item_id),
-        quantity: parseInt(formData.quantity),
-        payment_method: formData.payment_method,
-        notes: formData.notes || undefined,
-      });
+      backend.order
+        .create({
+          customer_name: formData.customer_name,
+          customer_email: formData.customer_email,
+          customer_phone: formData.customer_phone,
+          customer_address: formData.customer_address,
+          item_id: parseInt(formData.item_id),
+          quantity: parseInt(formData.quantity),
+          payment_method: formData.payment_method,
+          notes: formData.notes || undefined,
+        })
+        .then((response) => {
+          console.log("###response", response);
 
-      toast({
-        title: "Success",
-        description: "Order created successfully",
-      });
+          toast({
+            title: "Success",
+            description: "Order created successfully",
+          });
 
-      setIsCreateOpen(false);
-      setFormData({
-        customer_name: "",
-        customer_email: "",
-        customer_phone: "",
-        customer_address: "",
-        item_id: "",
-        quantity: "",
-        payment_method: "cash",
-        notes: "",
-      });
-      loadOrders();
+          setIsCreateOpen(false);
+          setFormData({
+            customer_name: "",
+            customer_email: "",
+            customer_phone: "",
+            customer_address: "",
+            item_id: "",
+            quantity: "",
+            payment_method: "cash",
+            notes: "",
+          });
+          loadOrders();
+        })
+        .catch((err) => {
+          console.log("###err", err);
+        });
+
+      //console.log("###resp", response);
     } catch (error: any) {
       console.error("Failed to create order:", error);
       toast({
@@ -114,7 +149,10 @@ export default function OrderManagement() {
     }
   };
 
-  const handleStatusChange = async (orderId: number, status: "pending" | "confirmed" | "completed" | "cancelled") => {
+  const handleStatusChange = async (
+    orderId: number,
+    status: "pending" | "confirmed" | "completed" | "cancelled"
+  ) => {
     try {
       await backend.order.updateStatus({ order_id: orderId, status });
       toast({
@@ -133,7 +171,10 @@ export default function OrderManagement() {
   };
 
   const getStatusBadge = (status: string) => {
-    const variants: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
+    const variants: Record<
+      string,
+      "default" | "secondary" | "destructive" | "outline"
+    > = {
       pending: "outline",
       confirmed: "default",
       completed: "secondary",
@@ -148,15 +189,21 @@ export default function OrderManagement() {
       bank_transfer: "bg-blue-500/10 text-blue-500",
       credit: "bg-orange-500/10 text-orange-500",
     };
-    return <Badge className={colors[method] || ""}>{method.replace("_", " ")}</Badge>;
+    return (
+      <Badge className={colors[method] || ""}>{method.replace("_", " ")}</Badge>
+    );
   };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Order Management</h2>
-          <p className="text-muted-foreground">Create and manage customer phone orders</p>
+          <h2 className="text-3xl font-bold tracking-tight">
+            Order Management
+          </h2>
+          <p className="text-muted-foreground">
+            Create and manage customer phone orders
+          </p>
         </div>
         <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
           <DialogTrigger asChild>
@@ -168,7 +215,9 @@ export default function OrderManagement() {
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Create Phone Order</DialogTitle>
-              <DialogDescription>Enter customer order details from phone call</DialogDescription>
+              <DialogDescription>
+                Enter customer order details from phone call
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -177,7 +226,12 @@ export default function OrderManagement() {
                   <Input
                     id="customer_name"
                     value={formData.customer_name}
-                    onChange={(e) => setFormData({ ...formData, customer_name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        customer_name: e.target.value,
+                      })
+                    }
                     required
                   />
                 </div>
@@ -186,7 +240,12 @@ export default function OrderManagement() {
                   <Input
                     id="customer_phone"
                     value={formData.customer_phone}
-                    onChange={(e) => setFormData({ ...formData, customer_phone: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        customer_phone: e.target.value,
+                      })
+                    }
                     required
                   />
                 </div>
@@ -198,7 +257,9 @@ export default function OrderManagement() {
                   id="customer_email"
                   type="email"
                   value={formData.customer_email}
-                  onChange={(e) => setFormData({ ...formData, customer_email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, customer_email: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -208,7 +269,12 @@ export default function OrderManagement() {
                 <Textarea
                   id="customer_address"
                   value={formData.customer_address}
-                  onChange={(e) => setFormData({ ...formData, customer_address: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      customer_address: e.target.value,
+                    })
+                  }
                   required
                 />
               </div>
@@ -216,14 +282,20 @@ export default function OrderManagement() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="item_id">Item *</Label>
-                  <Select value={formData.item_id} onValueChange={(value) => setFormData({ ...formData, item_id: value })}>
+                  <Select
+                    value={formData.item_id}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, item_id: value })
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select item" />
                     </SelectTrigger>
                     <SelectContent>
                       {items.map((item) => (
                         <SelectItem key={item.id} value={item.id.toString()}>
-                          {item.name} - ${item.price || 0} (Stock: {item.quantity})
+                          {item.name} - ${item.price || 0} (Stock:{" "}
+                          {item.quantity})
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -236,7 +308,9 @@ export default function OrderManagement() {
                     type="number"
                     min="1"
                     value={formData.quantity}
-                    onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, quantity: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -244,7 +318,12 @@ export default function OrderManagement() {
 
               <div className="space-y-2">
                 <Label htmlFor="payment_method">Payment Method *</Label>
-                <Select value={formData.payment_method} onValueChange={(value: any) => setFormData({ ...formData, payment_method: value })}>
+                <Select
+                  value={formData.payment_method}
+                  onValueChange={(value: any) =>
+                    setFormData({ ...formData, payment_method: value })
+                  }
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -261,13 +340,19 @@ export default function OrderManagement() {
                 <Textarea
                   id="notes"
                   value={formData.notes}
-                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, notes: e.target.value })
+                  }
                   placeholder="Additional notes or special instructions..."
                 />
               </div>
 
               <div className="flex justify-end space-x-2">
-                <Button type="button" variant="outline" onClick={() => setIsCreateOpen(false)}>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsCreateOpen(false)}
+                >
                   Cancel
                 </Button>
                 <Button type="submit" disabled={loading}>
@@ -305,18 +390,26 @@ export default function OrderManagement() {
                   <TableCell>#{order.id}</TableCell>
                   <TableCell>
                     <div className="font-medium">{order.customer_name}</div>
-                    <div className="text-sm text-muted-foreground">{order.customer_phone}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {order.customer_phone}
+                    </div>
                   </TableCell>
                   <TableCell>{order.item_name}</TableCell>
                   <TableCell>{order.quantity}</TableCell>
-                  <TableCell>${parseFloat(order.total_price.toString()).toFixed(2)}</TableCell>
+                  <TableCell>
+                    ${parseFloat(order.total_price.toString()).toFixed(2)}
+                  </TableCell>
                   <TableCell>{getPaymentBadge(order.payment_method)}</TableCell>
                   <TableCell>{getStatusBadge(order.status)}</TableCell>
-                  <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
+                  <TableCell>
+                    {new Date(order.created_at).toLocaleDateString()}
+                  </TableCell>
                   <TableCell>
                     <Select
                       value={order.status}
-                      onValueChange={(value: any) => handleStatusChange(order.id, value)}
+                      onValueChange={(value: any) =>
+                        handleStatusChange(order.id, value)
+                      }
                     >
                       <SelectTrigger className="w-[140px]">
                         <SelectValue />

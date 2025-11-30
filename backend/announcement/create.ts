@@ -4,14 +4,14 @@ import db from "../db";
 export interface CreateAnnouncementRequest {
   title: string;
   content: string;
-  createdBy: number;
+  createdBy?: number;
 }
 
 export interface Announcement {
   id: number;
   title: string;
   content: string;
-  createdBy: number;
+  createdBy?: number;
   createdAt: Date;
 }
 
@@ -21,14 +21,14 @@ export const create = api<CreateAnnouncementRequest, Announcement>(
   async (req) => {
     const announcement = await db.queryRow<Announcement>`
       INSERT INTO announcements (title, content, created_by)
-      VALUES (${req.title}, ${req.content}, ${req.createdBy})
+      VALUES (${req.title}, ${req.content}, ${req.createdBy || 1})
       RETURNING id, title, content, created_by as "createdBy", created_at as "createdAt"
     `;
-    
+
     if (!announcement) {
       throw new Error("Failed to create announcement");
     }
-    
+
     return announcement;
   }
 );

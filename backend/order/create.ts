@@ -34,7 +34,7 @@ export const create = api(
   { method: "POST", path: "/orders", expose: true, auth: true },
   async (req: CreateOrderRequest): Promise<Order> => {
     const auth = getAuthData()!;
-    
+
     const item = await db.queryRow`
       SELECT id, name, price, quantity 
       FROM items 
@@ -69,13 +69,13 @@ export const create = api(
         ${req.customer_email},
         ${req.customer_phone},
         ${req.customer_address},
-        ${req.item_id},
+        ${Number(req.item_id)},
         ${item.name},
-        ${req.quantity},
-        ${total_price},
+        ${Number(req.quantity)},
+        ${Number(total_price)},
         ${req.payment_method},
         ${req.notes || null},
-        ${auth.userID}
+        ${Number(auth?.userID) || 0}
       )
       RETURNING *
     `;

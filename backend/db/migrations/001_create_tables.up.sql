@@ -3,7 +3,9 @@ CREATE TABLE users (
   id BIGSERIAL PRIMARY KEY,
   phone_number TEXT NOT NULL UNIQUE,
   name TEXT NOT NULL,
+  email TEXT UNIQUE,
   role TEXT NOT NULL CHECK (role IN ('manager', 'finance', 'store')),
+  password TEXT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
