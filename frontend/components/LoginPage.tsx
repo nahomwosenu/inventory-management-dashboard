@@ -1,11 +1,24 @@
-import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { CurrentUser } from "../App";
 import { translations } from "../lib/translations";
+import { useAuth } from "@/context/auth";
 
 interface LoginPageProps {
   onLogin: (user: CurrentUser) => void;
@@ -15,18 +28,37 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   const [lang, setLang] = useState<"en" | "am">("en");
   const [role, setRole] = useState<"manager" | "finance" | "store">("manager");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
   const t = translations[lang];
+  const { login, user, getSavedLogin } = useAuth();
+
+  useEffect(() => {
+    getSavedLogin();
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      onLogin({
+        id: Date.now(),
+        name: user.name,
+        phoneNumber: user.phone,
+        role: user.role,
+      });
+    }
+  }, [user]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    onLogin({
-      id: Date.now(),
+    const loginUser = {
       name,
       phoneNumber,
       role,
-    });
+    };
+    if (login(loginUser.name, loginUser.phoneNumber, loginUser.role)) {
+      onLogin({ ...loginUser, id: Date.now() });
+    } else {
+      alert(`Invalid credentials for ${loginUser.name}`);
+    }
   };
 
   return (
@@ -35,7 +67,10 @@ export function LoginPage({ onLogin }: LoginPageProps) {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="text-2xl">{t.login}</CardTitle>
-            <Select value={lang} onValueChange={(v) => setLang(v as "en" | "am")}>
+            <Select
+              value={lang}
+              onValueChange={(v) => setLang(v as "en" | "am")}
+            >
               <SelectTrigger className="w-24">
                 <SelectValue />
               </SelectTrigger>
@@ -50,17 +85,6 @@ export function LoginPage({ onLogin }: LoginPageProps) {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">{t.name}</Label>
-              <Input
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={t.name}
-                required
-              />
-            </div>
-            
-            <div className="space-y-2">
               <Label htmlFor="phone">{t.phoneNumber}</Label>
               <Input
                 id="phone"
@@ -70,7 +94,18 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 required
               />
             </div>
-            
+            <div className="space-y-2">
+              <Label htmlFor="name">{t.password}</Label>
+              <Input
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder={t.password}
+                type="password"
+                required
+              />
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="role">{t.role}</Label>
               <Select value={role} onValueChange={(v) => setRole(v as any)}>
@@ -84,7 +119,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 </SelectContent>
               </Select>
             </div>
-            
+
             <Button type="submit" className="w-full">
               {t.login}
             </Button>

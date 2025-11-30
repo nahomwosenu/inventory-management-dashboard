@@ -22,7 +22,7 @@ export const translations = {
     error: "Error",
     confirmDelete: "Are you sure you want to delete this item?",
     print: "Print",
-    
+
     // Navigation
     users: "Users",
     items: "Items",
@@ -30,7 +30,8 @@ export const translations = {
     purchaseRequests: "Purchase Requests",
     reports: "Reports",
     announcements: "Announcements",
-    
+    password: "Password",
+
     // User Management
     userManagement: "User Management",
     manageUsers: "Add and manage system users",
@@ -44,7 +45,7 @@ export const translations = {
     failedToLoadUsers: "Failed to load users",
     failedToSaveUser: "Failed to save user",
     failedToDeleteUser: "Failed to delete user",
-    
+
     // Item Management
     itemManagement: "Item Management",
     manageItems: "Add and manage inventory items",
@@ -68,7 +69,7 @@ export const translations = {
     failedToSaveItem: "Failed to save item",
     failedToDeleteItem: "Failed to delete item",
     selectItem: "Select an item",
-    
+
     // Sales Management
     salesManagement: "Sales Management",
     registerSales: "Register daily sales",
@@ -80,7 +81,7 @@ export const translations = {
     saleRegistered: "Sale registered successfully",
     failedToLoadSales: "Failed to load sales",
     failedToRegisterSale: "Failed to register sale",
-    
+
     // Purchase Requests
     managePurchaseRequests: "Create and manage purchase requests",
     newPurchaseRequest: "New Purchase Request",
@@ -99,7 +100,7 @@ export const translations = {
     failedToLoadPurchaseRequests: "Failed to load purchase requests",
     failedToCreatePurchaseRequest: "Failed to create purchase request",
     failedToUpdatePurchaseRequest: "Failed to update purchase request",
-    
+
     // Reports
     viewReports: "Generate and view reports",
     generateReport: "Generate Report",
@@ -121,7 +122,7 @@ export const translations = {
     itemsAddedToday: "Items Added Today",
     revenue: "Revenue",
     failedToLoadReport: "Failed to load report",
-    
+
     // Announcements
     manageAnnouncements: "Post and view announcements",
     newAnnouncement: "New Announcement",
@@ -134,7 +135,7 @@ export const translations = {
     failedToLoadAnnouncements: "Failed to load announcements",
     failedToCreateAnnouncement: "Failed to create announcement",
   },
-  
+
   am: {
     // General
     inventoryDashboard: "የእቃ መዝገብ ዳሽቦርድ",
@@ -158,7 +159,8 @@ export const translations = {
     error: "ስህተት",
     confirmDelete: "እርግጠኛ ነዎት ይህን መሰረዝ ይፈልጋሉ?",
     print: "አትም",
-    
+    password: "ፓስዎርድ",
+
     // Navigation
     users: "ተጠቃሚዎች",
     items: "እቃዎች",
@@ -166,7 +168,7 @@ export const translations = {
     purchaseRequests: "የግዢ ጥያቄዎች",
     reports: "ሪፖርቶች",
     announcements: "ማስታወቂያዎች",
-    
+
     // User Management
     userManagement: "የተጠቃሚ አስተዳደር",
     manageUsers: "የስርዓት ተጠቃሚዎችን ያክሉ እና ያስተዳድሩ",
@@ -180,7 +182,7 @@ export const translations = {
     failedToLoadUsers: "ተጠቃሚዎችን መጫን አልተሳካም",
     failedToSaveUser: "ተጠቃሚን ማስቀመጥ አልተሳካም",
     failedToDeleteUser: "ተጠቃሚን መሰረዝ አልተሳካም",
-    
+
     // Item Management
     itemManagement: "የእቃ አስተዳደር",
     manageItems: "የእቃ መዝገብ እቃዎችን ያክሉ እና ያስተዳድሩ",
@@ -204,7 +206,7 @@ export const translations = {
     failedToSaveItem: "እቃን ማስቀመጥ አልተሳካም",
     failedToDeleteItem: "እቃን መሰረዝ አልተሳካም",
     selectItem: "እቃ ይምረጡ",
-    
+
     // Sales Management
     salesManagement: "የሽያጭ አስተዳደር",
     registerSales: "ዕለታዊ ሽያጮችን ይመዝግቡ",
@@ -216,7 +218,7 @@ export const translations = {
     saleRegistered: "ሽያጭ በተሳካ ሁኔታ ተመዝግቧል",
     failedToLoadSales: "ሽያጮችን መጫን አልተሳካም",
     failedToRegisterSale: "ሽያጭን መመዝገብ አልተሳካም",
-    
+
     // Purchase Requests
     managePurchaseRequests: "የግዢ ጥያቄዎችን ይፍጠሩ እና ያስተዳድሩ",
     newPurchaseRequest: "አዲስ የግዢ ጥያቄ",
@@ -235,7 +237,7 @@ export const translations = {
     failedToLoadPurchaseRequests: "የግዢ ጥያቄዎችን መጫን አልተሳካም",
     failedToCreatePurchaseRequest: "የግዢ ጥያቄን መፍጠር አልተሳካም",
     failedToUpdatePurchaseRequest: "የግዢ ጥያቄን ማዘመን አልተሳካም",
-    
+
     // Reports
     viewReports: "ሪፖርቶችን ያመነጩ እና ይመልከቱ",
     generateReport: "ሪፖርት አመንጭ",
@@ -257,7 +259,7 @@ export const translations = {
     itemsAddedToday: "ዛሬ የተጨመሩ እቃዎች",
     revenue: "ገቢ",
     failedToLoadReport: "ሪፖርትን መጫን አልተሳካም",
-    
+
     // Announcements
     manageAnnouncements: "ማስታወቂያዎችን ይለጥፉ እና ይመልከቱ",
     newAnnouncement: "አዲስ ማስታወቂያ",
