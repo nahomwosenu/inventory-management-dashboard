@@ -1,9 +1,9 @@
 import { useBackend } from "@/lib/backend";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface User {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   password: string;
   phone: string;
   role: "manager" | "finance" | "store";
@@ -12,8 +12,8 @@ export interface User {
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
 
-  const saveLogin = (user: User) => {
-    setUser(user);
+  const saveLogin = (u: User) => {
+    setUser(u);
   };
 
   const getUserToken = () => {
@@ -22,17 +22,12 @@ export const useAuth = () => {
     return btoa(`${user.phone}:${user.password}`);
   };
 
-  const login = (phone: string, password: string, role: string) => {
+  const login = (phone: string, password: string, role: User["role"]) => {
     if (!phone || !password || !role) return false;
-    setUser({
-      phone,
-      password,
-      role,
-    });
-    if (!findUser) return false;
-    saveLogin(findUser);
+    const newUser: User = { phone, password, role, name: undefined, email: undefined };
+    saveLogin(newUser);
     // Save full user so the app can restore state including name/email
-    localStorage.setItem("user", JSON.stringify(findUser));
+    localStorage.setItem("user", JSON.stringify(newUser));
     return true;
   };
 
@@ -44,8 +39,8 @@ export const useAuth = () => {
   const getSavedLogin = () => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
-      const user = JSON.parse(savedUser);
-      setUser(user);
+      const u = JSON.parse(savedUser) as User;
+      setUser(u);
     }
   };
 

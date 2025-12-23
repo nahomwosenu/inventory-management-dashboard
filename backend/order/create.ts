@@ -51,6 +51,8 @@ export const create = api(
 
     const total_price = parseFloat(item.price) * req.quantity;
 
+    console.log("auth user id", auth?.id, ' creating with id: ', auth?.id || 2);
+
     const order = await db.queryRow<Order>`
       INSERT INTO orders (
         customer_name,
@@ -75,7 +77,7 @@ export const create = api(
         ${Number(total_price)},
         ${req.payment_method},
         ${req.notes || null},
-        ${Number(auth?.userID) || 0}
+        ${Number(auth?.id) || 2}
       )
       RETURNING *
     `;

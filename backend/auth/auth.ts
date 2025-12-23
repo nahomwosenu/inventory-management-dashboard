@@ -48,6 +48,7 @@ interface AuthParams {
 }
 
 export interface AuthData {
+  id?: number | string;
   userID: string;
   name: string;
   phone: string;
@@ -81,11 +82,11 @@ export const auth = authHandler<AuthParams, AuthData>(async (data) => {
   const base64Credentials = data.authorization.replace("Basic ", "");
   const decoded = (globalThis as any).Buffer
     ? (globalThis as any).Buffer.from(base64Credentials, "base64").toString(
-        "utf8"
-      )
+      "utf8"
+    )
     : (globalThis as any).atob
-    ? (globalThis as any).atob(base64Credentials)
-    : (() => {
+      ? (globalThis as any).atob(base64Credentials)
+      : (() => {
         throw APIError.unauthenticated("Base64 decode not available");
       })();
 

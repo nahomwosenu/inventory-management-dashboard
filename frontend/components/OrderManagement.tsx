@@ -55,6 +55,7 @@ export default function OrderManagement() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<string | null>(null);
+  const [addresses, setAddresses] = useState<string[]>([]);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
@@ -71,6 +72,7 @@ export default function OrderManagement() {
   useEffect(() => {
     loadOrders();
     loadItems();
+    loadAddressesLov();
   }, []);
 
   const loadOrders = async () => {
@@ -84,6 +86,16 @@ export default function OrderManagement() {
         description: "Failed to load orders",
         variant: "destructive",
       });
+    }
+  };
+
+  const loadAddressesLov = async () => {
+    try {
+      const response = await backend.lov.list({ category: "addresses" });
+      console.log("###addresses", response.values);
+      setAddresses(response.values);
+    } catch (error) {
+      console.error("Failed to load addresses LOV:", error);
     }
   };
 
@@ -262,7 +274,7 @@ export default function OrderManagement() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="customer_email">Email *</Label>
+                <Label htmlFor="customer_email">Email (optional)</Label>
                 <Input
                   id="customer_email"
                   type="email"
@@ -270,23 +282,32 @@ export default function OrderManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, customer_email: e.target.value })
                   }
-                  required
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="customer_address">Delivery Address *</Label>
-                <Textarea
-                  id="customer_address"
+                <Select
                   value={formData.customer_address}
-                  onChange={(e) =>
+                  onValueChange={(value) =>
                     setFormData({
                       ...formData,
-                      customer_address: e.target.value,
+                      customer_address: value
                     })
                   }
                   required
-                />
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select address" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {addresses.map((address, index) => (
+                      <SelectItem key={index} value={address}>
+                        {address}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
