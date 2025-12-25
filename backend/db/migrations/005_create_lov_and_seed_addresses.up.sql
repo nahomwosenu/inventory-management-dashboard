@@ -11,8 +11,35 @@ CREATE INDEX idx_lov_category ON lov(category);
 
 -- Seed addresses LOV
 INSERT INTO lov (category, value, created_by_user_id) VALUES
-('addresses', '123 Main St, Springfield', 1),
-('addresses', '456 Elm St, Springfield', 1),
-('addresses', '789 Oak Ave, Springfield', 1),
-('addresses', '12 River Rd, Lakeside', 1),
-('addresses', '34 Mountain Dr, Hillside', 1);
+('addresses', 'ሴቻ', 1),
+('addresses', 'ሲቀላ ', 1),
+('addresses', 'የትነበርሽ', 1),
+('addresses', 'ኖክ ሳይት', 1),
+('addresses', 'ልማት ', 1),
+('addresses', 'ጨርቃ ጨርቅ ', 1),
+('addresses', 'ውሃ ምንጭ  ', 1),
+('addresses', 'ጉርባ  ', 1),
+('addresses', 'ልማት ', 1),
+('addresses', 'በቀለሞላ ', 1),
+('addresses', 'ኳስ ሜዳ ስፈር', 1),
+('addresses', 'ድልፋና  ', 1),
+('addresses', 'አርባ ምንጭ ዩኒቨርሲቲ', 1),
+('addresses', 'ሻራ', 1),
+('addresses', 'ጫኖ', 1),
+('addresses', 'ሃይለ ሪዞርት', 1),
+('addresses', 'ኤርፖርት'),
+('addresses', 'አዞ ራንች'),
+('addresses', 'ዶርዜ ስፈር'),
+('addresses', 'እትዮፈሽረ'),
+('addresses', 'ግዞላ '),
+('addresses', 'ስሌ'),
+('addresses', 'ሸሌ');
+ 
+
+
+
+
+
+
+
+;
