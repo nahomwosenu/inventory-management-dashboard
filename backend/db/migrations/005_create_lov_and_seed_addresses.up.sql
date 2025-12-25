@@ -10,6 +10,7 @@ CREATE TABLE lov (
 CREATE INDEX idx_lov_category ON lov(category);
 
 -- Seed addresses LOV
+delete from lov;
 INSERT INTO lov (category, value, created_by_user_id) VALUES
 ('addresses', 'ሴቻ', 1),
 ('addresses', 'ሲቀላ ', 1),

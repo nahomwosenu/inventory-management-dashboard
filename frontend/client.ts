@@ -17,7 +17,7 @@ export const Local: BaseURL = "http://localhost:4000"
  * Environment returns a BaseURL for calling the cloud environment with the given name.
  */
 export function Environment(name: string): BaseURL {
-    return `https://${name}-inventory-management-dashboard-psfi.encr.app`
+    return `https://${name}-.encr.app`
 }
 
 /**
@@ -127,7 +127,7 @@ export namespace announcement {
          */
         public async create(params: RequestType<typeof api_announcement_create_create>): Promise<ResponseType<typeof api_announcement_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/announcements`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/announcements`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_announcement_create_create>
         }
 
@@ -136,7 +136,7 @@ export namespace announcement {
          */
         public async list(): Promise<ResponseType<typeof api_announcement_list_list>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/announcements`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/announcements`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_announcement_list_list>
         }
     }
@@ -172,7 +172,7 @@ export namespace item {
          */
         public async create(params: RequestType<typeof api_item_create_create>): Promise<ResponseType<typeof api_item_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/items`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/items`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_item_create_create>
         }
 
@@ -180,7 +180,7 @@ export namespace item {
          * Deletes an item.
          */
         public async deleteItem(params: { id: number }): Promise<void> {
-            await this.baseClient.callTypedAPI(`/items/${encodeURIComponent(params.id)}`, {method: "DELETE", body: undefined})
+            await this.baseClient.callTypedAPI(`/items/${encodeURIComponent(params.id)}`, { method: "DELETE", body: undefined })
         }
 
         /**
@@ -188,7 +188,7 @@ export namespace item {
          */
         public async list(): Promise<ResponseType<typeof api_item_list_list>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/items`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/items`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_item_list_list>
         }
 
@@ -198,15 +198,15 @@ export namespace item {
         public async update(params: RequestType<typeof api_item_update_update>): Promise<ResponseType<typeof api_item_update_update>> {
             // Construct the body with only the fields which we want encoded within the body (excluding query string or header fields)
             const body: Record<string, any> = {
-                code:        params.code,
+                code: params.code,
                 description: params.description,
-                name:        params.name,
-                price:       params.price,
-                quantity:    params.quantity,
+                name: params.name,
+                price: params.price,
+                quantity: params.quantity,
             }
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/items/${encodeURIComponent(params.id)}`, {method: "PUT", body: JSON.stringify(body)})
+            const resp = await this.baseClient.callTypedAPI(`/items/${encodeURIComponent(params.id)}`, { method: "PUT", body: JSON.stringify(body) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_item_update_update>
         }
     }
@@ -233,13 +233,13 @@ export namespace lov {
 
         public async create(params: RequestType<typeof api_lov_create_create>): Promise<ResponseType<typeof api_lov_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/lovs`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/lovs`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_lov_create_create>
         }
 
         public async list(params: { category: string }): Promise<ResponseType<typeof api_lov_list_list>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/lovs/bycategory/${encodeURIComponent(params.category)}`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/lovs/bycategory/${encodeURIComponent(params.category)}`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_lov_list_list>
         }
 
@@ -250,7 +250,7 @@ export namespace lov {
             }
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/lovs/${encodeURIComponent(params.lov_id)}`, {method: "POST", body: JSON.stringify(body)})
+            const resp = await this.baseClient.callTypedAPI(`/lovs/${encodeURIComponent(params.lov_id)}`, { method: "POST", body: JSON.stringify(body) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_lov_update_update>
         }
     }
@@ -277,13 +277,13 @@ export namespace order {
 
         public async create(params: RequestType<typeof api_order_create_create>): Promise<ResponseType<typeof api_order_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/orders`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/orders`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_order_create_create>
         }
 
         public async list(): Promise<ResponseType<typeof api_order_list_list>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/orders`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/orders`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_order_list_list>
         }
 
@@ -294,7 +294,7 @@ export namespace order {
             }
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/orders/${encodeURIComponent(params.order_id)}/status`, {method: "POST", body: JSON.stringify(body)})
+            const resp = await this.baseClient.callTypedAPI(`/orders/${encodeURIComponent(params.order_id)}/status`, { method: "POST", body: JSON.stringify(body) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_order_update_status_updateStatus>
         }
     }
@@ -326,11 +326,11 @@ export namespace purchase {
             // Construct the body with only the fields which we want encoded within the body (excluding query string or header fields)
             const body: Record<string, any> = {
                 approvedBy: params.approvedBy,
-                status:     params.status,
+                status: params.status,
             }
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/purchase-requests/${encodeURIComponent(params.id)}/approve`, {method: "PUT", body: JSON.stringify(body)})
+            const resp = await this.baseClient.callTypedAPI(`/purchase-requests/${encodeURIComponent(params.id)}/approve`, { method: "PUT", body: JSON.stringify(body) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_purchase_approve_approve>
         }
 
@@ -339,7 +339,7 @@ export namespace purchase {
          */
         public async create(params: RequestType<typeof api_purchase_create_create>): Promise<ResponseType<typeof api_purchase_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/purchase-requests`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/purchase-requests`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_purchase_create_create>
         }
 
@@ -353,7 +353,7 @@ export namespace purchase {
             })
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/purchase-requests`, {query, method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/purchase-requests`, { query, method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_purchase_list_list>
         }
     }
@@ -385,19 +385,19 @@ export namespace report {
          */
         public async inventory(): Promise<ResponseType<typeof api_report_inventory_inventory>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/reports/inventory`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/reports/inventory`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_report_inventory_inventory>
         }
 
         public async orders(params: RequestType<typeof api_report_orders_orders>): Promise<ResponseType<typeof api_report_orders_orders>> {
             // Convert our params into the objects we need for the request
             const query = makeRecord<string, string | string[]>({
-                endDate:   params.endDate,
+                endDate: params.endDate,
                 startDate: params.startDate,
             })
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/reports/orders`, {query, method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/reports/orders`, { query, method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_report_orders_orders>
         }
 
@@ -407,12 +407,12 @@ export namespace report {
         public async purchase(params: RequestType<typeof api_report_purchase_purchase>): Promise<ResponseType<typeof api_report_purchase_purchase>> {
             // Convert our params into the objects we need for the request
             const query = makeRecord<string, string | string[]>({
-                endDate:   params.endDate,
+                endDate: params.endDate,
                 startDate: params.startDate,
             })
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/reports/purchase`, {query, method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/reports/purchase`, { query, method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_report_purchase_purchase>
         }
 
@@ -422,12 +422,12 @@ export namespace report {
         public async sales(params: RequestType<typeof api_report_sales_sales>): Promise<ResponseType<typeof api_report_sales_sales>> {
             // Convert our params into the objects we need for the request
             const query = makeRecord<string, string | string[]>({
-                endDate:   params.endDate,
+                endDate: params.endDate,
                 startDate: params.startDate,
             })
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/reports/sales`, {query, method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/reports/sales`, { query, method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_report_sales_sales>
         }
     }
@@ -456,12 +456,12 @@ export namespace sale {
         public async list(params: RequestType<typeof api_sale_list_list>): Promise<ResponseType<typeof api_sale_list_list>> {
             // Convert our params into the objects we need for the request
             const query = makeRecord<string, string | string[]>({
-                endDate:   params.endDate,
+                endDate: params.endDate,
                 startDate: params.startDate,
             })
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/sales`, {query, method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/sales`, { query, method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_sale_list_list>
         }
 
@@ -470,7 +470,7 @@ export namespace sale {
          */
         public async register(params: RequestType<typeof api_sale_register_register>): Promise<ResponseType<typeof api_sale_register_register>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/sales`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/sales`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_sale_register_register>
         }
     }
@@ -502,7 +502,7 @@ export namespace user {
          */
         public async create(params: RequestType<typeof api_user_create_create>): Promise<ResponseType<typeof api_user_create_create>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/users`, {method: "POST", body: JSON.stringify(params)})
+            const resp = await this.baseClient.callTypedAPI(`/users`, { method: "POST", body: JSON.stringify(params) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_user_create_create>
         }
 
@@ -510,7 +510,7 @@ export namespace user {
          * Deletes a user.
          */
         public async deleteUser(params: { id: number }): Promise<void> {
-            await this.baseClient.callTypedAPI(`/users/${encodeURIComponent(params.id)}`, {method: "DELETE", body: undefined})
+            await this.baseClient.callTypedAPI(`/users/${encodeURIComponent(params.id)}`, { method: "DELETE", body: undefined })
         }
 
         /**
@@ -518,7 +518,7 @@ export namespace user {
          */
         public async list(): Promise<ResponseType<typeof api_user_list_list>> {
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/users`, {method: "GET", body: undefined})
+            const resp = await this.baseClient.callTypedAPI(`/users`, { method: "GET", body: undefined })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_user_list_list>
         }
 
@@ -528,13 +528,13 @@ export namespace user {
         public async update(params: RequestType<typeof api_user_update_update>): Promise<ResponseType<typeof api_user_update_update>> {
             // Construct the body with only the fields which we want encoded within the body (excluding query string or header fields)
             const body: Record<string, any> = {
-                name:        params.name,
+                name: params.name,
                 phoneNumber: params.phoneNumber,
-                role:        params.role,
+                role: params.role,
             }
 
             // Now make the actual call to the API
-            const resp = await this.baseClient.callTypedAPI(`/users/${encodeURIComponent(params.id)}`, {method: "PUT", body: JSON.stringify(body)})
+            const resp = await this.baseClient.callTypedAPI(`/users/${encodeURIComponent(params.id)}`, { method: "PUT", body: JSON.stringify(body) })
             return JSON.parse(await resp.text(), dateReviver) as ResponseType<typeof api_user_update_update>
         }
     }
@@ -545,36 +545,36 @@ type PickMethods<Type> = Omit<CallParameters, "method"> & { method?: Type };
 
 // Helper type to omit all fields that are cookies.
 type OmitCookie<T> = {
-  [K in keyof T as T[K] extends CookieWithOptions<any> ? never : K]: T[K];
+    [K in keyof T as T[K] extends CookieWithOptions<any> ? never : K]: T[K];
 };
 
 type RequestType<Type extends (...args: any[]) => any> =
-  Parameters<Type> extends [infer H, ...any[]]
+    Parameters<Type> extends [infer H, ...any[]]
     ? OmitCookie<H>
     : void;
 
 type ResponseType<Type extends (...args: any[]) => any> = OmitCookie<Awaited<ReturnType<Type>>>;
 
 function dateReviver(key: string, value: any): any {
-  if (
-    typeof value === "string" &&
-    value.length >= 10 &&
-    value.charCodeAt(0) >= 48 && // '0'
-    value.charCodeAt(0) <= 57 // '9'
-  ) {
-    const parsedDate = new Date(value);
-    if (!isNaN(parsedDate.getTime())) {
-      return parsedDate;
+    if (
+        typeof value === "string" &&
+        value.length >= 10 &&
+        value.charCodeAt(0) >= 48 && // '0'
+        value.charCodeAt(0) <= 57 // '9'
+    ) {
+        const parsedDate = new Date(value);
+        if (!isNaN(parsedDate.getTime())) {
+            return parsedDate;
+        }
     }
-  }
-  return value;
+    return value;
 }
 
 
 function encodeQuery(parts: Record<string, string | string[]>): string {
     const pairs: string[] = []
     for (const key in parts) {
-        const val = (Array.isArray(parts[key]) ?  parts[key] : [parts[key]]) as string[]
+        const val = (Array.isArray(parts[key]) ? parts[key] : [parts[key]]) as string[]
         for (const v of val) {
             pairs.push(`${key}=${encodeURIComponent(v)}`)
         }
@@ -595,32 +595,32 @@ function makeRecord<K extends string | number | symbol, V>(record: Record<K, V |
 }
 
 import {
-  StreamInOutHandlerFn,
-  StreamInHandlerFn,
-  StreamOutHandlerFn,
+    StreamInOutHandlerFn,
+    StreamInHandlerFn,
+    StreamOutHandlerFn,
 } from "encore.dev/api";
 
 type StreamRequest<Type> = Type extends
-  | StreamInOutHandlerFn<any, infer Req, any>
-  | StreamInHandlerFn<any, infer Req, any>
-  | StreamOutHandlerFn<any, any>
-  ? Req
-  : never;
+    | StreamInOutHandlerFn<any, infer Req, any>
+    | StreamInHandlerFn<any, infer Req, any>
+    | StreamOutHandlerFn<any, any>
+    ? Req
+    : never;
 
 type StreamResponse<Type> = Type extends
-  | StreamInOutHandlerFn<any, any, infer Resp>
-  | StreamInHandlerFn<any, any, infer Resp>
-  | StreamOutHandlerFn<any, infer Resp>
-  ? Resp
-  : never;
+    | StreamInOutHandlerFn<any, any, infer Resp>
+    | StreamInHandlerFn<any, any, infer Resp>
+    | StreamOutHandlerFn<any, infer Resp>
+    ? Resp
+    : never;
 
 
 function encodeWebSocketHeaders(headers: Record<string, string>) {
     // url safe, no pad
     const base64encoded = btoa(JSON.stringify(headers))
-      .replaceAll("=", "")
-      .replaceAll("+", "-")
-      .replaceAll("/", "_");
+        .replaceAll("=", "")
+        .replaceAll("+", "-")
+        .replaceAll("/", "_");
     return "encore.dev.headers." + base64encoded;
 }
 
@@ -796,9 +796,9 @@ type CallParameters = Omit<RequestInit, "headers"> & {
 
 // AuthDataGenerator is a function that returns a new instance of the authentication data required by this API
 export type AuthDataGenerator = () =>
-  | RequestType<typeof auth_auth>
-  | Promise<RequestType<typeof auth_auth> | undefined>
-  | undefined;
+    | RequestType<typeof auth_auth>
+    | Promise<RequestType<typeof auth_auth> | undefined>
+    | undefined;
 
 // A fetcher is the prototype for the inbuilt Fetch function
 export type Fetcher = typeof fetch;
@@ -886,10 +886,10 @@ class BaseClient {
         // If we now have authentication data, add it to the request
         if (authData) {
             if (authData.query) {
-                query = {...query, ...authData.query};
+                query = { ...query, ...authData.query };
             }
             if (authData.headers) {
-                headers = {...headers, ...authData.headers};
+                headers = { ...headers, ...authData.headers };
             }
         }
 
@@ -907,10 +907,10 @@ class BaseClient {
         // If we now have authentication data, add it to the request
         if (authData) {
             if (authData.query) {
-                query = {...query, ...authData.query};
+                query = { ...query, ...authData.query };
             }
             if (authData.headers) {
-                headers = {...headers, ...authData.headers};
+                headers = { ...headers, ...authData.headers };
             }
         }
 
@@ -928,10 +928,10 @@ class BaseClient {
         // If we now have authentication data, add it to the request
         if (authData) {
             if (authData.query) {
-                query = {...query, ...authData.query};
+                query = { ...query, ...authData.query };
             }
             if (authData.headers) {
-                headers = {...headers, ...authData.headers};
+                headers = { ...headers, ...authData.headers };
             }
         }
 
@@ -956,7 +956,7 @@ class BaseClient {
         }
 
         // Merge our headers with any predefined headers
-        init.headers = {...this.headers, ...init.headers, ...headers}
+        init.headers = { ...this.headers, ...init.headers, ...headers }
 
         // Fetch auth data if there is any
         const authData = await this.getAuthData();
@@ -964,16 +964,16 @@ class BaseClient {
         // If we now have authentication data, add it to the request
         if (authData) {
             if (authData.query) {
-                query = {...query, ...authData.query};
+                query = { ...query, ...authData.query };
             }
             if (authData.headers) {
-                init.headers = {...init.headers, ...authData.headers};
+                init.headers = { ...init.headers, ...authData.headers };
             }
         }
 
         // Make the actual request
         const queryString = query ? '?' + encodeQuery(query) : ''
-        const response = await this.fetcher(this.baseURL+path+queryString, init)
+        const response = await this.fetcher(this.baseURL + path + queryString, init)
 
         // handle any error responses
         if (!response.ok) {
@@ -1019,8 +1019,8 @@ function isAPIErrorResponse(err: any): err is APIErrorResponse {
     return (
         err !== undefined && err !== null &&
         isErrCode(err.code) &&
-        typeof(err.message) === "string" &&
-        (err.details === undefined || err.details === null || typeof(err.details) === "object")
+        typeof (err.message) === "string" &&
+        (err.details === undefined || err.details === null || typeof (err.details) === "object")
     )
 }
 
@@ -1054,8 +1054,8 @@ export class APIError extends Error {
         // set error name as constructor name, make it not enumerable to keep native Error behavior
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target#new.target_in_constructors
         Object.defineProperty(this, 'name', {
-            value:        'APIError',
-            enumerable:   false,
+            value: 'APIError',
+            enumerable: false,
             configurable: true,
         })
 
