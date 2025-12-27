@@ -7,6 +7,7 @@ export interface CreateItemRequest {
   description?: string;
   quantity: number;
   price?: number;
+  isRaw?: boolean;
   quality?: string;
 }
 
@@ -18,6 +19,7 @@ export interface Item {
   quantity: number;
   quality?: string;
   price?: number;
+  isRaw?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

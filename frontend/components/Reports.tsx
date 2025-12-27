@@ -39,7 +39,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
   const updateDates = () => {
     const today = new Date();
     const end = today.toISOString().split("T")[0];
-    
+
     let start: Date;
     if (period === "daily") {
       start = today;
@@ -48,7 +48,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
     } else {
       start = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
     }
-    
+
     setStartDate(start.toISOString().split("T")[0]);
     setEndDate(end);
   };
@@ -126,12 +126,12 @@ export function Reports({ lang, currentUser }: ReportsProps) {
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="flex-1 space-y-2">
             <Label>{t.startDate}</Label>
             <Input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
           </div>
-          
+
           <div className="flex-1 space-y-2">
             <Label>{t.endDate}</Label>
             <Input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
@@ -151,7 +151,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
               <FileText className="mr-2 h-4 w-4" />
               {t.generateReport}
             </Button>
-            
+
             {salesReport && (
               <>
                 <div className="grid gap-4 md:grid-cols-2">
@@ -160,7 +160,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                       <CardTitle className="text-sm">{t.totalRevenue}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-2xl font-bold">{salesReport.totalRevenue.toFixed(2)} ETB</p>
+                      <p className="text-2xl font-bold">{salesReport?.totalRevenue ? Number(salesReport.totalRevenue).toFixed(2) : 0.00} ETB</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -188,7 +188,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                         <TableCell>{item.itemCode}</TableCell>
                         <TableCell>{item.itemName}</TableCell>
                         <TableCell>{item.totalQuantity}</TableCell>
-                        <TableCell>{item.totalRevenue.toFixed(2)} ETB</TableCell>
+                        <TableCell>{salesReport?.totalRevenue ? Number(salesReport.totalRevenue).toFixed(2) : 0.00} ETB</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -202,7 +202,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
               <FileText className="mr-2 h-4 w-4" />
               {t.generateReport}
             </Button>
-            
+
             {ordersReport && (
               <>
                 <div className="grid gap-4 md:grid-cols-2">
@@ -211,7 +211,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                       <CardTitle className="text-sm">Total Order Revenue</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-2xl font-bold">{ordersReport.totalRevenue.toFixed(2)} ETB</p>
+                      <p className="text-2xl font-bold">{ordersReport?.totalRevenue ? Number(ordersReport.totalRevenue).toFixed(2) : 0.00} ETB</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -219,7 +219,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                       <CardTitle className="text-sm">Total Orders</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-2xl font-bold">{ordersReport.totalOrders}</p>
+                      <p className="text-2xl font-bold">{ordersReport?.totalOrders}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -295,7 +295,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                           <TableRow key={i}>
                             <TableCell>{item.itemName}</TableCell>
                             <TableCell>{item.totalQuantity}</TableCell>
-                            <TableCell>{item.totalRevenue.toFixed(2)} ETB</TableCell>
+                            <TableCell>{item.totalRevenue ? Number(item.totalRevenue).toFixed(2) : 0.00} ETB</TableCell>
                             <TableCell>{item.ordersCount}</TableCell>
                           </TableRow>
                         ))}
@@ -312,7 +312,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
               <FileText className="mr-2 h-4 w-4" />
               {t.generateReport}
             </Button>
-            
+
             {purchaseReport && (
               <>
                 <div className="grid gap-4 md:grid-cols-2">
@@ -321,7 +321,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                       <CardTitle className="text-sm">{t.totalEstimatedCost}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-2xl font-bold">{purchaseReport.totalEstimatedCost.toFixed(2)} ETB</p>
+                      <p className="text-2xl font-bold">{purchaseReport.totalEstimatedCost ? Number(purchaseReport.totalEstimatedCost).toFixed(2) : 0.00} ETB</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -351,7 +351,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                         <TableCell>{item.itemName}</TableCell>
                         <TableCell>{item.itemCode || "-"}</TableCell>
                         <TableCell>{item.totalQuantity}</TableCell>
-                        <TableCell>{item.totalEstimatedCost.toFixed(2)} ETB</TableCell>
+                        <TableCell>{item.totalEstimatedCost ? Number(item.totalEstimatedCost.toFixed(2)) : 0.00} ETB</TableCell>
                         <TableCell>{item.approvedCount}</TableCell>
                         <TableCell>{item.deniedCount}</TableCell>
                       </TableRow>
@@ -379,7 +379,7 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                       <CardTitle className="text-sm">{t.totalValue}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-2xl font-bold">{inventoryReport.totalValue.toFixed(2)} ETB</p>
+                      <p className="text-2xl font-bold">{inventoryReport.totalValue ? Number(inventoryReport.totalValue).toFixed(2) : 0.00} ETB</p>
                     </CardContent>
                   </Card>
                   <Card>
@@ -408,8 +408,8 @@ export function Reports({ lang, currentUser }: ReportsProps) {
                         <TableCell>{item.code}</TableCell>
                         <TableCell>{item.name}</TableCell>
                         <TableCell>{item.quantity}</TableCell>
-                        <TableCell>{item.price ? `${item.price.toFixed(2)} ETB` : "-"}</TableCell>
-                        <TableCell>{item.totalValue.toFixed(2)} ETB</TableCell>
+                        <TableCell>{item.price ? `${item.price ? Number(item.price).toFixed(2) : 0.00} ETB` : "-"}</TableCell>
+                        <TableCell>{item.totalValue ? Number(item.totalValue).toFixed(2) : 0.00} ETB</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

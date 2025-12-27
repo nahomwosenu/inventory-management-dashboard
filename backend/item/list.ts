@@ -11,7 +11,7 @@ export const list = api<void, ListItemsResponse>(
   { expose: true, method: "GET", path: "/items", auth: true },
   async () => {
     const items = await db.queryAll<Item>`
-      SELECT id, code, name, description, quantity, price, quality, created_at as "createdAt", updated_at as "updatedAt"
+      SELECT id, code, name, description, quantity, price, quality, isRaw, created_at as "createdAt", updated_at as "updatedAt"
       FROM items
       ORDER BY name
     `;

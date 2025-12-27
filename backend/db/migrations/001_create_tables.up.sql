@@ -17,6 +17,7 @@ CREATE TABLE items (
   description TEXT,
   quantity BIGINT NOT NULL DEFAULT 0,
   quality TEXT,
+  isRaw BOOLEAN DEFAULT FALSE,
   price DOUBLE PRECISION,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()

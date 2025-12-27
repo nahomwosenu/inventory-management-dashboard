@@ -49,6 +49,8 @@ interface Item {
   createdAt: Date;
 }
 
+const ORG_TYPES = ["NGO", "Government", "Private Sector"];
+
 export default function OrderManagement() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [items, setItems] = useState<Item[]>([]);
@@ -56,10 +58,14 @@ export default function OrderManagement() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<string | null>(null);
   const [addresses, setAddresses] = useState<string[]>([]);
+  const [organization, setOrganization] = useState<string | null>(null);
+  const [orgType, setOrgType] = useState<string | null>(null);
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
     customer_name: "",
+    organization: "",
+    orgType: "",
     customer_email: "",
     customer_phone: "",
     customer_address: "",
@@ -68,6 +74,14 @@ export default function OrderManagement() {
     payment_method: "cash" as "cash" | "bank_transfer" | "credit",
     notes: "",
   });
+
+  const getLoggedInUser = () => {
+    const userData = window.localStorage.getItem("user");
+    const user = JSON.parse(userData || "{}");
+    if (user)
+      return user.role;
+    return null;
+  }
 
   useEffect(() => {
     loadOrders();
@@ -145,6 +159,8 @@ export default function OrderManagement() {
           setFormData({
             customer_name: "",
             customer_email: "",
+            organization: "",
+            orgType: "",
             customer_phone: "",
             customer_address: "",
             item_id: "",
@@ -227,7 +243,7 @@ export default function OrderManagement() {
             Create and manage customer phone orders
           </p>
         </div>
-        <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
+        {getLoggedInUser() !== 'manager' && <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
           <DialogTrigger asChild>
             <Button>
               <Phone className="mr-2 h-4 w-4" />
@@ -258,10 +274,49 @@ export default function OrderManagement() {
                   />
                 </div>
                 <div className="space-y-2">
+                  <Label htmlFor="customer_address">Organization Type (optional)</Label>
+                  <Select
+                    value={formData.orgType}
+                    onValueChange={(value) =>
+                      setFormData({
+                        ...formData,
+                        orgType: value
+                      })
+                    }
+                    required
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select Organization Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {ORG_TYPES.map((address, index) => (
+                        <SelectItem key={index} value={address}>
+                          {address}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="customer_name">Organization (Optional)</Label>
+                  <Input
+                    id="organization"
+                    value={formData.organization}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        organization: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="customer_phone">Phone Number *</Label>
                   <Input
                     id="customer_phone"
                     value={formData.customer_phone}
+                    placeholder="+251"
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -274,7 +329,7 @@ export default function OrderManagement() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="customer_email">Email (optional)</Label>
+                <Label htmlFor="customer_email">TIN Number (optional)</Label>
                 <Input
                   id="customer_email"
                   type="email"
@@ -394,7 +449,7 @@ export default function OrderManagement() {
               </div>
             </form>
           </DialogContent>
-        </Dialog>
+        </Dialog>}
       </div>
 
       <Card>

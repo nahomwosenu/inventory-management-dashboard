@@ -24,7 +24,7 @@ export function Dashboard({ currentUser, onLogout }: DashboardProps) {
 
   const getAvailableTabs = () => {
     const tabs = [];
-    
+
     if (currentUser.role === "manager") {
       tabs.push("users", "announcements", "purchases", "items", "orders", "reports");
     } else if (currentUser.role === "finance") {
@@ -32,7 +32,7 @@ export function Dashboard({ currentUser, onLogout }: DashboardProps) {
     } else if (currentUser.role === "store") {
       tabs.push("items", "reports");
     }
-    
+
     return tabs;
   };
 
@@ -43,7 +43,7 @@ export function Dashboard({ currentUser, onLogout }: DashboardProps) {
       <header className="sticky top-0 z-10 border-b bg-card">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <h1 className="text-2xl font-bold">{t.inventoryDashboard}</h1>
-          
+
           <div className="flex items-center gap-4">
             <Select value={lang} onValueChange={(v) => setLang(v as "en" | "am")}>
               <SelectTrigger className="w-24">
@@ -54,7 +54,7 @@ export function Dashboard({ currentUser, onLogout }: DashboardProps) {
                 <SelectItem value="am">አማርኛ</SelectItem>
               </SelectContent>
             </Select>
-            
+
             <div className="flex items-center gap-2 text-sm">
               <UserCircle className="h-5 w-5" />
               <div>
@@ -64,7 +64,7 @@ export function Dashboard({ currentUser, onLogout }: DashboardProps) {
                 </div>
               </div>
             </div>
-            
+
             <Button variant="outline" size="sm" onClick={onLogout}>
               <LogOut className="mr-2 h-4 w-4" />
               {t.logout}

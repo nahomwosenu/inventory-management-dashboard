@@ -12,6 +12,13 @@ import { useToast } from "@/components/ui/use-toast";
 import backend from "~backend/client";
 import type { CurrentUser } from "../App";
 import { translations } from "../lib/translations";
+import { Item } from "~backend/item/create"; import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface PurchaseRequestsProps {
   lang: "en" | "am";
@@ -21,6 +28,7 @@ interface PurchaseRequestsProps {
 export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
   const [requests, setRequests] = useState<any[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [items, setItems] = useState<Item[]>([]);
   const [formData, setFormData] = useState({
     itemName: "",
     itemCode: "",
@@ -36,6 +44,7 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
 
   useEffect(() => {
     loadRequests();
+    loadItems();
   }, []);
 
   const loadRequests = async () => {
@@ -48,15 +57,25 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
     }
   };
 
+  const loadItems = async () => {
+    try {
+      const response = await backend.item.list();
+      setItems(response.items);
+      console.log('###items', response.items);
+    } catch (error) {
+      console.error("Failed to load items:", error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       await backend.purchase.create({
         ...formData,
         requestedBy: currentUser.id,
       });
-      
+
       toast({ title: t.success, description: t.purchaseRequestCreated });
       setDialogOpen(false);
       setFormData({
@@ -80,10 +99,10 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
         approvedBy: currentUser.id,
         status,
       });
-      
-      toast({ 
-        title: t.success, 
-        description: status === "approved" ? t.purchaseRequestApproved : t.purchaseRequestDenied 
+
+      toast({
+        title: t.success,
+        description: status === "approved" ? t.purchaseRequestApproved : t.purchaseRequestDenied
       });
       loadRequests();
     } catch (error) {
@@ -98,7 +117,7 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
       approved: "default",
       denied: "destructive",
     };
-    
+
     return <Badge variant={variants[status]}>{t[status as keyof typeof t]}</Badge>;
   };
 
@@ -131,8 +150,8 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
           </TabsList>
 
           <TabsContent value="pending" className="mt-4">
-            <RequestsTable 
-              requests={pendingRequests} 
+            <RequestsTable
+              requests={pendingRequests}
               canApprove={canApprove}
               onApprove={handleApprove}
               getStatusBadge={getStatusBadge}
@@ -141,8 +160,8 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
           </TabsContent>
 
           <TabsContent value="approved" className="mt-4">
-            <RequestsTable 
-              requests={approvedRequests} 
+            <RequestsTable
+              requests={approvedRequests}
               canApprove={false}
               onApprove={handleApprove}
               getStatusBadge={getStatusBadge}
@@ -151,8 +170,8 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
           </TabsContent>
 
           <TabsContent value="denied" className="mt-4">
-            <RequestsTable 
-              requests={deniedRequests} 
+            <RequestsTable
+              requests={deniedRequests}
               canApprove={false}
               onApprove={handleApprove}
               getStatusBadge={getStatusBadge}
@@ -169,25 +188,31 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
             </DialogHeader>
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="itemName">{t.itemName}</Label>
-                  <Input
-                    id="itemName"
+                <div className="space-y-6">
+                  <Label htmlFor="item_id">Item *</Label>
+                  <Select
                     value={formData.itemName}
-                    onChange={(e) => setFormData({ ...formData, itemName: e.target.value })}
-                    required
-                  />
+                    onValueChange={(val) =>
+                      setFormData({ ...formData, itemName: val, itemCode: items.find((i) => i.name == val)?.code || '' })
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select item" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {items
+                        .filter((item) => item.israw)
+                        .sort((a, b) => a.code.localeCompare(b.code))
+                        .map((item) => (
+                          <SelectItem key={item.id} value={item.id.toString()}>
+                            {item.name} - ${item.price || 0} (Stock:{" "}
+                            {item.quantity})
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="itemCode">{t.code}</Label>
-                  <Input
-                    id="itemCode"
-                    value={formData.itemCode}
-                    onChange={(e) => setFormData({ ...formData, itemCode: e.target.value })}
-                  />
-                </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="quantity">{t.quantity}</Label>
                   <Input
@@ -198,7 +223,7 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
                     required
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="estimatedPrice">{t.estimatedPrice}</Label>
                   <Input
@@ -209,7 +234,7 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
                     onChange={(e) => setFormData({ ...formData, estimatedPrice: parseFloat(e.target.value) || 0 })}
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="notes">{t.notes}</Label>
                   <Input
@@ -219,7 +244,7 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
                   />
                 </div>
               </div>
-              
+
               <DialogFooter className="mt-4">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>{t.cancel}</Button>
                 <Button type="submit">{t.submit}</Button>
@@ -232,15 +257,15 @@ export function PurchaseRequests({ lang, currentUser }: PurchaseRequestsProps) {
   );
 }
 
-function RequestsTable({ 
-  requests, 
-  canApprove, 
-  onApprove, 
-  getStatusBadge, 
-  t 
-}: { 
-  requests: any[]; 
-  canApprove: boolean; 
+function RequestsTable({
+  requests,
+  canApprove,
+  onApprove,
+  getStatusBadge,
+  t
+}: {
+  requests: any[];
+  canApprove: boolean;
   onApprove: (id: number, status: "approved" | "denied") => void;
   getStatusBadge: (status: string) => React.ReactNode;
   t: any;
