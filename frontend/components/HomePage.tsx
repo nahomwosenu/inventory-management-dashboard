@@ -6,7 +6,9 @@ import {
     FaMapMarkerAlt,
     FaEnvelope,
     FaUser,
-    FaCalendarAlt
+    FaCalendarAlt,
+    FaTimes,
+    FaBars
 } from 'react-icons/fa';
 // Assuming your Carousel component exists here
 import { Carousel, CarouselItem } from './ui/carousel';
@@ -23,6 +25,7 @@ type Announcement = {
 
 export default function LandingPage() {
     const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         // Simulating: fetch from backend.announcements
@@ -56,26 +59,59 @@ export default function LandingPage() {
             {/* --- NAVIGATION BAR --- */}
             <nav className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
                 <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+                    {/* Logo */}
                     <a href="/" className="flex items-center gap-3">
                         <img src="https://i.ibb.co/dyTvpky/2.png" className="h-12 w-auto" alt="logo" />
                         <div className="flex flex-col">
-                            <span className="text-xl font-black tracking-tight text-slate-800 leading-none">NO-HE</span>
-                            <span className="text-[10px] uppercase tracking-widest text-primary font-bold">Cement Investment</span>
+                            <span className="text-xl font-black tracking-tight text-slate-800 leading-none">
+                                NO-HE
+                            </span>
+                            <span className="text-[10px] uppercase tracking-widest text-primary font-bold">
+                                Cement Investment
+                            </span>
                         </div>
                     </a>
 
+                    {/* Desktop menu */}
                     <div className="hidden md:flex items-center gap-8">
-                        <a href="#about" className="text-sm font-semibold hover:text-primary transition-colors">About</a>
-                        <a href="#announcements" className="text-sm font-semibold hover:text-primary transition-colors">Announcements</a>
-                        <a href="#contact" className="text-sm font-semibold hover:text-primary transition-colors">Contact</a>
+                        <a href="#about" className="text-sm font-semibold hover:text-primary">
+                            About
+                        </a>
+                        <a href="#announcements" className="text-sm font-semibold hover:text-primary">
+                            Announcements
+                        </a>
+                        <a href="#contact" className="text-sm font-semibold hover:text-primary">
+                            Contact
+                        </a>
                         <a
                             href="/login"
-                            className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary transition-all shadow-md active:scale-95"
+                            className="flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold"
                         >
-                            Inventory Login <FaArrowRight className="text-xs" />
+                            Inventory Login
                         </a>
                     </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="md:hidden text-2xl"
+                        onClick={() => setOpen(!open)}
+                        aria-label="Toggle menu"
+                    >
+                        {open ? <FaTimes /> : <FaBars />}
+                    </button>
                 </div>
+
+                {/* Mobile menu */}
+                {open && (
+                    <div className="md:hidden bg-white border-t border-slate-200 px-4 py-6 space-y-4">
+                        <a href="#about" className="block font-semibold">About</a>
+                        <a href="#announcements" className="block font-semibold">Announcements</a>
+                        <a href="#contact" className="block font-semibold">Contact</a>
+                        <a href="/login" className="block font-semibold text-primary">
+                            Inventory Login
+                        </a>
+                    </div>
+                )}
             </nav>
 
             <main className="flex-1">

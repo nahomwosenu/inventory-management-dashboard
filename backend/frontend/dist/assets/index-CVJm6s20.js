@@ -26357,6 +26357,9 @@ function IconBase(props) {
 function FaArrowRight(props) {
   return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" }, "child": [] }] })(props);
 }
+function FaBars(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z" }, "child": [] }] })(props);
+}
 function FaCalendarAlt(props) {
   return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z" }, "child": [] }] })(props);
 }
@@ -26371,6 +26374,9 @@ function FaNewspaper(props) {
 }
 function FaPhoneAlt(props) {
   return GenIcon({ "attr": { "viewBox": "0 0 512 512" }, "child": [{ "tag": "path", "attr": { "d": "M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z" }, "child": [] }] })(props);
+}
+function FaTimes(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 352 512" }, "child": [{ "tag": "path", "attr": { "d": "M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" }, "child": [] }] })(props);
 }
 function FaUser(props) {
   return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" }, "child": [] }] })(props);
@@ -28331,6 +28337,7 @@ function CarouselItem({ className, ...props }) {
 }
 function LandingPage() {
   const [announcements, setAnnouncements] = reactExports.useState([]);
+  const [open, setOpen] = reactExports.useState(false);
   reactExports.useEffect(() => {
     fetchAnnouncements();
   }, []);
@@ -28353,31 +28360,45 @@ function LandingPage() {
     "/images/1.jpg"
   ];
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 h-20 flex items-center justify-between", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "/", className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "https://i.ibb.co/dyTvpky/2.png", className: "h-12 w-auto", alt: "logo" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-black tracking-tight text-slate-800 leading-none", children: "NO-HE" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] uppercase tracking-widest text-primary font-bold", children: "Cement Investment" })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center gap-8", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#about", className: "text-sm font-semibold hover:text-primary transition-colors", children: "About" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#announcements", className: "text-sm font-semibold hover:text-primary transition-colors", children: "Announcements" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#contact", className: "text-sm font-semibold hover:text-primary transition-colors", children: "Contact" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "a",
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("nav", { className: "sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 h-20 flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "/", className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "https://i.ibb.co/dyTvpky/2.png", className: "h-12 w-auto", alt: "logo" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-black tracking-tight text-slate-800 leading-none", children: "NO-HE" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] uppercase tracking-widest text-primary font-bold", children: "Cement Investment" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center gap-8", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#about", className: "text-sm font-semibold hover:text-primary", children: "About" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#announcements", className: "text-sm font-semibold hover:text-primary", children: "Announcements" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#contact", className: "text-sm font-semibold hover:text-primary", children: "Contact" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "a",
+            {
+              href: "/login",
+              className: "flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold",
+              children: "Inventory Login"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
           {
-            href: "/login",
-            className: "flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary transition-all shadow-md active:scale-95",
-            children: [
-              "Inventory Login ",
-              /* @__PURE__ */ jsxRuntimeExports.jsx(FaArrowRight, { className: "text-xs" })
-            ]
+            className: "md:hidden text-2xl",
+            onClick: () => setOpen(!open),
+            "aria-label": "Toggle menu",
+            children: open ? /* @__PURE__ */ jsxRuntimeExports.jsx(FaTimes, {}) : /* @__PURE__ */ jsxRuntimeExports.jsx(FaBars, {})
           }
         )
+      ] }),
+      open && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:hidden bg-white border-t border-slate-200 px-4 py-6 space-y-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#about", className: "block font-semibold", children: "About" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#announcements", className: "block font-semibold", children: "Announcements" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#contact", className: "block font-semibold", children: "Contact" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "/login", className: "block font-semibold text-primary", children: "Inventory Login" })
       ] })
-    ] }) }),
+    ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "flex-1", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "relative h-[85vh] overflow-hidden bg-black", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 opacity-60", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Carousel, { autoplay: true, delay: 3e3, className: "h-full w-full", children: heroImages.map((src, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(CarouselItem, { className: "h-[85vh] w-full", children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src, alt: `Slide ${i}`, className: "w-full h-full object-cover" }) }, i)) }) }),
