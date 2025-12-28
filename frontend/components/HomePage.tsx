@@ -9,7 +9,7 @@ import {
     FaCalendarAlt
 } from 'react-icons/fa';
 // Assuming your Carousel component exists here
-import { Carousel } from './ui/carousel';
+import { Carousel, CarouselItem } from './ui/carousel';
 import backend from "~backend/client";
 
 // Types for the backend data
@@ -82,11 +82,11 @@ export default function LandingPage() {
                 {/* --- HERO SECTION WITH SLIDER --- */}
                 <section className="relative h-[85vh] overflow-hidden bg-black">
                     <div className="absolute inset-0 opacity-60">
-                        <Carousel>
+                        <Carousel autoplay delay={3000} className="h-full w-full">
                             {heroImages.map((src, i) => (
-                                <div key={i} className="h-[85vh] w-full">
+                                <CarouselItem key={i} className="h-[85vh] w-full">
                                     <img src={src} alt={`Slide ${i}`} className="w-full h-full object-cover" />
-                                </div>
+                                </CarouselItem>
                             ))}
                         </Carousel>
                     </div>

@@ -2170,8 +2170,8 @@ function requireReactDomClient_production() {
       );
     return stateNode;
   }
-  var canUseDOM = !("undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement), passiveBrowserEventsSupported = false;
-  if (canUseDOM)
+  var canUseDOM2 = !("undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement), passiveBrowserEventsSupported = false;
+  if (canUseDOM2)
     try {
       var options = {};
       Object.defineProperty(options, "passive", {
@@ -2402,9 +2402,9 @@ function requireReactDomClient_production() {
   }), SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface), ToggleEventInterface = assign({}, EventInterface, {
     newState: 0,
     oldState: 0
-  }), SyntheticToggleEvent = createSyntheticEvent(ToggleEventInterface), END_KEYCODES = [9, 13, 27, 32], canUseCompositionEvent = canUseDOM && "CompositionEvent" in window, documentMode = null;
-  canUseDOM && "documentMode" in document && (documentMode = document.documentMode);
-  var canUseTextInputEvent = canUseDOM && "TextEvent" in window && !documentMode, useFallbackCompositionData = canUseDOM && (!canUseCompositionEvent || documentMode && 8 < documentMode && 11 >= documentMode), SPACEBAR_CHAR = String.fromCharCode(32), hasSpaceKeypress = false;
+  }), SyntheticToggleEvent = createSyntheticEvent(ToggleEventInterface), END_KEYCODES = [9, 13, 27, 32], canUseCompositionEvent = canUseDOM2 && "CompositionEvent" in window, documentMode = null;
+  canUseDOM2 && "documentMode" in document && (documentMode = document.documentMode);
+  var canUseTextInputEvent = canUseDOM2 && "TextEvent" in window && !documentMode, useFallbackCompositionData = canUseDOM2 && (!canUseCompositionEvent || documentMode && 8 < documentMode && 11 >= documentMode), SPACEBAR_CHAR = String.fromCharCode(32), hasSpaceKeypress = false;
   function isFallbackCompositionEnd(domEventName, nativeEvent) {
     switch (domEventName) {
       case "keyup":
@@ -2501,9 +2501,9 @@ function requireReactDomClient_production() {
     if ("change" === domEventName) return targetInst;
   }
   var isInputEventSupported = false;
-  if (canUseDOM) {
+  if (canUseDOM2) {
     var JSCompiler_inline_result$jscomp$286;
-    if (canUseDOM) {
+    if (canUseDOM2) {
       var isSupported$jscomp$inline_427 = "oninput" in document;
       if (!isSupported$jscomp$inline_427) {
         var element$jscomp$inline_428 = document.createElement("div");
@@ -2608,7 +2608,7 @@ function requireReactDomClient_production() {
     var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
     return nodeName && ("input" === nodeName && ("text" === elem.type || "search" === elem.type || "tel" === elem.type || "url" === elem.type || "password" === elem.type) || "textarea" === nodeName || "true" === elem.contentEditable);
   }
-  var skipSelectionChangeEvent = canUseDOM && "documentMode" in document && 11 >= document.documentMode, activeElement = null, activeElementInst = null, lastSelection = null, mouseDown = false;
+  var skipSelectionChangeEvent = canUseDOM2 && "documentMode" in document && 11 >= document.documentMode, activeElement = null, activeElementInst = null, lastSelection = null, mouseDown = false;
   function constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget) {
     var doc = nativeEventTarget.window === nativeEventTarget ? nativeEventTarget.document : 9 === nativeEventTarget.nodeType ? nativeEventTarget : nativeEventTarget.ownerDocument;
     mouseDown || null == activeElement || activeElement !== getActiveElement(doc) || (doc = activeElement, "selectionStart" in doc && hasSelectionCapabilities(doc) ? doc = { start: doc.selectionStart, end: doc.selectionEnd } : (doc = (doc.ownerDocument && doc.ownerDocument.defaultView || window).getSelection(), doc = {
@@ -2640,7 +2640,7 @@ function requireReactDomClient_production() {
     transitioncancel: makePrefixMap("Transition", "TransitionCancel"),
     transitionend: makePrefixMap("Transition", "TransitionEnd")
   }, prefixedEventNames = {}, style = {};
-  canUseDOM && (style = document.createElement("div").style, "AnimationEvent" in window || (delete vendorPrefixes.animationend.animation, delete vendorPrefixes.animationiteration.animation, delete vendorPrefixes.animationstart.animation), "TransitionEvent" in window || delete vendorPrefixes.transitionend.transition);
+  canUseDOM2 && (style = document.createElement("div").style, "AnimationEvent" in window || (delete vendorPrefixes.animationend.animation, delete vendorPrefixes.animationiteration.animation, delete vendorPrefixes.animationstart.animation), "TransitionEvent" in window || delete vendorPrefixes.transitionend.transition);
   function getVendorPrefixedEventName(eventName) {
     if (prefixedEventNames[eventName]) return prefixedEventNames[eventName];
     if (!vendorPrefixes[eventName]) return eventName;
@@ -14275,6 +14275,28 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
+const __iconNode$d = [
+  ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
+  ["path", { d: "M19 12H5", key: "x3x0zl" }]
+];
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$d);
+/**
+ * @license lucide-react v0.484.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$c = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+];
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$c);
+/**
+ * @license lucide-react v0.484.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
 const __iconNode$b = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
 const Check = createLucideIcon("check", __iconNode$b);
 /**
@@ -14849,9 +14871,9 @@ const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/;
 const shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
 const imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
 const isFraction = (value) => fractionRegex.test(value);
-const isNumber = (value) => !!value && !Number.isNaN(Number(value));
+const isNumber$1 = (value) => !!value && !Number.isNaN(Number(value));
 const isInteger = (value) => !!value && Number.isInteger(Number(value));
-const isPercent = (value) => value.endsWith("%") && isNumber(value.slice(0, -1));
+const isPercent = (value) => value.endsWith("%") && isNumber$1(value.slice(0, -1));
 const isTshirtSize = (value) => tshirtUnitRegex.test(value);
 const isAny = () => true;
 const isLengthOnly = (value) => (
@@ -14867,7 +14889,7 @@ const isAnyNonArbitrary = (value) => !isArbitraryValue(value) && !isArbitraryVar
 const isArbitrarySize = (value) => getIsArbitraryValue(value, isLabelSize, isNever);
 const isArbitraryValue = (value) => arbitraryValueRegex.test(value);
 const isArbitraryLength = (value) => getIsArbitraryValue(value, isLabelLength, isLengthOnly);
-const isArbitraryNumber = (value) => getIsArbitraryValue(value, isLabelNumber, isNumber);
+const isArbitraryNumber = (value) => getIsArbitraryValue(value, isLabelNumber, isNumber$1);
 const isArbitraryPosition = (value) => getIsArbitraryValue(value, isLabelPosition, isNever);
 const isArbitraryImage = (value) => getIsArbitraryValue(value, isLabelImage, isImage);
 const isArbitraryShadow = (value) => getIsArbitraryValue(value, isLabelShadow, isShadow);
@@ -14980,10 +15002,10 @@ const getDefaultConfig = () => {
     isArbitraryVariable,
     isArbitraryValue
   ];
-  const scaleBorderWidth = () => ["", isNumber, isArbitraryVariableLength, isArbitraryLength];
+  const scaleBorderWidth = () => ["", isNumber$1, isArbitraryVariableLength, isArbitraryLength];
   const scaleLineStyle = () => ["solid", "dashed", "dotted", "double"];
   const scaleBlendMode = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"];
-  const scaleMaskImagePosition = () => [isNumber, isPercent, isArbitraryVariablePosition, isArbitraryPosition];
+  const scaleMaskImagePosition = () => [isNumber$1, isPercent, isArbitraryVariablePosition, isArbitraryPosition];
   const scaleBlur = () => [
     // Deprecated since Tailwind CSS v4.0.0
     "",
@@ -14992,9 +15014,9 @@ const getDefaultConfig = () => {
     isArbitraryVariable,
     isArbitraryValue
   ];
-  const scaleRotate = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-  const scaleScale = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-  const scaleSkew = () => [isNumber, isArbitraryVariable, isArbitraryValue];
+  const scaleRotate = () => ["none", isNumber$1, isArbitraryVariable, isArbitraryValue];
+  const scaleScale = () => ["none", isNumber$1, isArbitraryVariable, isArbitraryValue];
+  const scaleSkew = () => [isNumber$1, isArbitraryVariable, isArbitraryValue];
   const scaleTranslate = () => [isFraction, "full", ...scaleUnambiguousSpacing()];
   return {
     cacheSize: 500,
@@ -15014,7 +15036,7 @@ const getDefaultConfig = () => {
       perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
       radius: [isTshirtSize],
       shadow: [isTshirtSize],
-      spacing: ["px", isNumber],
+      spacing: ["px", isNumber$1],
       text: [isTshirtSize],
       "text-shadow": [isTshirtSize],
       tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
@@ -15041,7 +15063,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/columns
        */
       columns: [{
-        columns: [isNumber, isArbitraryValue, isArbitraryVariable, themeContainer]
+        columns: [isNumber$1, isArbitraryValue, isArbitraryVariable, themeContainer]
       }],
       /**
        * Break After
@@ -15272,21 +15294,21 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/flex
        */
       flex: [{
-        flex: [isNumber, isFraction, "auto", "initial", "none", isArbitraryValue]
+        flex: [isNumber$1, isFraction, "auto", "initial", "none", isArbitraryValue]
       }],
       /**
        * Flex Grow
        * @see https://tailwindcss.com/docs/flex-grow
        */
       grow: [{
-        grow: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        grow: ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Flex Shrink
        * @see https://tailwindcss.com/docs/flex-shrink
        */
       shrink: [{
-        shrink: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        shrink: ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Order
@@ -15763,7 +15785,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/line-clamp
        */
       "line-clamp": [{
-        "line-clamp": [isNumber, "none", isArbitraryVariable, isArbitraryNumber]
+        "line-clamp": [isNumber$1, "none", isArbitraryVariable, isArbitraryNumber]
       }],
       /**
        * Line Height
@@ -15836,7 +15858,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/text-decoration-thickness
        */
       "text-decoration-thickness": [{
-        decoration: [isNumber, "from-font", "auto", isArbitraryVariable, isArbitraryLength]
+        decoration: [isNumber$1, "from-font", "auto", isArbitraryVariable, isArbitraryLength]
       }],
       /**
        * Text Decoration Color
@@ -15850,7 +15872,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/text-underline-offset
        */
       "underline-offset": [{
-        "underline-offset": [isNumber, "auto", isArbitraryVariable, isArbitraryValue]
+        "underline-offset": [isNumber$1, "auto", isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Text Transform
@@ -16316,14 +16338,14 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/outline-offset
        */
       "outline-offset": [{
-        "outline-offset": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "outline-offset": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Outline Width
        * @see https://tailwindcss.com/docs/outline-width
        */
       "outline-w": [{
-        outline: ["", isNumber, isArbitraryVariableLength, isArbitraryLength]
+        outline: ["", isNumber$1, isArbitraryVariableLength, isArbitraryLength]
       }],
       /**
        * Outline Color
@@ -16398,7 +16420,7 @@ const getDefaultConfig = () => {
        * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
        */
       "ring-offset-w": [{
-        "ring-offset": [isNumber, isArbitraryLength]
+        "ring-offset": [isNumber$1, isArbitraryLength]
       }],
       /**
        * Ring Offset Color
@@ -16442,7 +16464,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/opacity
        */
       opacity: [{
-        opacity: [isNumber, isArbitraryVariable, isArbitraryValue]
+        opacity: [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Mix Blend Mode
@@ -16477,7 +16499,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/mask-image
        */
       "mask-image-linear-pos": [{
-        "mask-linear": [isNumber]
+        "mask-linear": [isNumber$1]
       }],
       "mask-image-linear-from-pos": [{
         "mask-linear-from": scaleMaskImagePosition()
@@ -16591,7 +16613,7 @@ const getDefaultConfig = () => {
         "mask-radial-at": scalePosition()
       }],
       "mask-image-conic-pos": [{
-        "mask-conic": [isNumber]
+        "mask-conic": [isNumber$1]
       }],
       "mask-image-conic-from-pos": [{
         "mask-conic-from": scaleMaskImagePosition()
@@ -16682,14 +16704,14 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/brightness
        */
       brightness: [{
-        brightness: [isNumber, isArbitraryVariable, isArbitraryValue]
+        brightness: [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Contrast
        * @see https://tailwindcss.com/docs/contrast
        */
       contrast: [{
-        contrast: [isNumber, isArbitraryVariable, isArbitraryValue]
+        contrast: [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Drop Shadow
@@ -16717,35 +16739,35 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/grayscale
        */
       grayscale: [{
-        grayscale: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        grayscale: ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Hue Rotate
        * @see https://tailwindcss.com/docs/hue-rotate
        */
       "hue-rotate": [{
-        "hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "hue-rotate": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Invert
        * @see https://tailwindcss.com/docs/invert
        */
       invert: [{
-        invert: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        invert: ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Saturate
        * @see https://tailwindcss.com/docs/saturate
        */
       saturate: [{
-        saturate: [isNumber, isArbitraryVariable, isArbitraryValue]
+        saturate: [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Sepia
        * @see https://tailwindcss.com/docs/sepia
        */
       sepia: [{
-        sepia: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        sepia: ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Filter
@@ -16772,56 +16794,56 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/backdrop-brightness
        */
       "backdrop-brightness": [{
-        "backdrop-brightness": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-brightness": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Contrast
        * @see https://tailwindcss.com/docs/backdrop-contrast
        */
       "backdrop-contrast": [{
-        "backdrop-contrast": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-contrast": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Grayscale
        * @see https://tailwindcss.com/docs/backdrop-grayscale
        */
       "backdrop-grayscale": [{
-        "backdrop-grayscale": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-grayscale": ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Hue Rotate
        * @see https://tailwindcss.com/docs/backdrop-hue-rotate
        */
       "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-hue-rotate": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Invert
        * @see https://tailwindcss.com/docs/backdrop-invert
        */
       "backdrop-invert": [{
-        "backdrop-invert": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-invert": ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Opacity
        * @see https://tailwindcss.com/docs/backdrop-opacity
        */
       "backdrop-opacity": [{
-        "backdrop-opacity": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-opacity": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Saturate
        * @see https://tailwindcss.com/docs/backdrop-saturate
        */
       "backdrop-saturate": [{
-        "backdrop-saturate": [isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-saturate": [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Backdrop Sepia
        * @see https://tailwindcss.com/docs/backdrop-sepia
        */
       "backdrop-sepia": [{
-        "backdrop-sepia": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+        "backdrop-sepia": ["", isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       // --------------
       // --- Tables ---
@@ -16890,7 +16912,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/transition-duration
        */
       duration: [{
-        duration: [isNumber, "initial", isArbitraryVariable, isArbitraryValue]
+        duration: [isNumber$1, "initial", isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Transition Timing Function
@@ -16904,7 +16926,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/transition-delay
        */
       delay: [{
-        delay: [isNumber, isArbitraryVariable, isArbitraryValue]
+        delay: [isNumber$1, isArbitraryVariable, isArbitraryValue]
       }],
       /**
        * Animation
@@ -17348,7 +17370,7 @@ const getDefaultConfig = () => {
        * @see https://tailwindcss.com/docs/stroke-width
        */
       "stroke-w": [{
-        stroke: [isNumber, isArbitraryVariableLength, isArbitraryLength, isArbitraryNumber]
+        stroke: [isNumber$1, isArbitraryVariableLength, isArbitraryLength, isArbitraryNumber]
       }],
       /**
        * Stroke
@@ -17425,6 +17447,20 @@ const getDefaultConfig = () => {
   };
 };
 const twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
+const uploadURL = "http://localhost/upload/upload.php";
+const uploadImage = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  const response = await fetch(uploadURL, {
+    method: "POST",
+    body: formData
+  });
+  if (!response.ok) {
+    throw new Error("Image upload failed");
+  }
+  const data = await response.json();
+  return data.url;
+};
 function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
@@ -22807,7 +22843,8 @@ const translations = {
     by: "By",
     announcementCreated: "Announcement created successfully",
     failedToLoadAnnouncements: "Failed to load announcements",
-    failedToCreateAnnouncement: "Failed to create announcement"
+    failedToCreateAnnouncement: "Failed to create announcement",
+    previewDesc: "This is how your announcement will look once published."
   },
   am: {
     // General
@@ -22935,7 +22972,8 @@ const translations = {
     by: "በ",
     announcementCreated: "ማስታወቂያ በተሳካ ሁኔታ ተፈጥሯል",
     failedToLoadAnnouncements: "ማስታወቂያዎችን መጫን አልተሳካም",
-    failedToCreateAnnouncement: "ማስታወቂያን መፍጠር አልተሳካም"
+    failedToCreateAnnouncement: "ማስታወቂያን መፍጠር አልተሳካም",
+    previewDesc: "ይህ ማስታወቂያዎ ከተለጠፈ በኋላ እንዴት እንደሚመስል ነው।"
   }
 };
 function Card({ className, ...props }) {
@@ -23671,6 +23709,7 @@ class Client {
     const base = new BaseClient(this.target, this.options);
     this.announcement = new announcement.ServiceClient(base);
     this.item = new item.ServiceClient(base);
+    this.lov = new lov.ServiceClient(base);
     this.order = new order.ServiceClient(base);
     this.purchase = new purchase.ServiceClient(base);
     this.report = new report.ServiceClient(base);
@@ -23697,16 +23736,10 @@ var announcement;
       this.create = this.create.bind(this);
       this.list = this.list.bind(this);
     }
-    /**
-     * Creates a new announcement.
-     */
     async create(params) {
       const resp = await this.baseClient.callTypedAPI(`/announcements`, { method: "POST", body: JSON.stringify(params) });
       return JSON.parse(await resp.text(), dateReviver);
     }
-    /**
-     * Retrieves all announcements.
-     */
     async list() {
       const resp = await this.baseClient.callTypedAPI(`/announcements`, { method: "GET", body: void 0 });
       return JSON.parse(await resp.text(), dateReviver);
@@ -23761,6 +23794,33 @@ var item;
   }
   item2.ServiceClient = ServiceClient;
 })(item || (item = {}));
+var lov;
+((lov2) => {
+  class ServiceClient {
+    constructor(baseClient) {
+      this.baseClient = baseClient;
+      this.create = this.create.bind(this);
+      this.list = this.list.bind(this);
+      this.update = this.update.bind(this);
+    }
+    async create(params) {
+      const resp = await this.baseClient.callTypedAPI(`/lovs`, { method: "POST", body: JSON.stringify(params) });
+      return JSON.parse(await resp.text(), dateReviver);
+    }
+    async list(params) {
+      const resp = await this.baseClient.callTypedAPI(`/lovs/bycategory/${encodeURIComponent(params.category)}`, { method: "GET", body: void 0 });
+      return JSON.parse(await resp.text(), dateReviver);
+    }
+    async update(params) {
+      const body = {
+        value: params.value
+      };
+      const resp = await this.baseClient.callTypedAPI(`/lovs/${encodeURIComponent(params.lov_id)}`, { method: "POST", body: JSON.stringify(body) });
+      return JSON.parse(await resp.text(), dateReviver);
+    }
+  }
+  lov2.ServiceClient = ServiceClient;
+})(lov || (lov = {}));
 var order;
 ((order2) => {
   class ServiceClient {
@@ -24840,6 +24900,7 @@ function Badge({
 function PurchaseRequests({ lang, currentUser }) {
   const [requests, setRequests] = reactExports.useState([]);
   const [dialogOpen, setDialogOpen] = reactExports.useState(false);
+  const [items, setItems] = reactExports.useState([]);
   const [formData, setFormData] = reactExports.useState({
     itemName: "",
     itemCode: "",
@@ -24853,6 +24914,7 @@ function PurchaseRequests({ lang, currentUser }) {
   const canApprove = currentUser.role === "manager";
   reactExports.useEffect(() => {
     loadRequests();
+    loadItems();
   }, []);
   const loadRequests = async () => {
     try {
@@ -24861,6 +24923,15 @@ function PurchaseRequests({ lang, currentUser }) {
     } catch (error) {
       console.error("Failed to load purchase requests:", error);
       toast2({ title: t.error, description: t.failedToLoadPurchaseRequests, variant: "destructive" });
+    }
+  };
+  const loadItems = async () => {
+    try {
+      const response = await backend.item.list();
+      setItems(response.items);
+      console.log("###items", response.items);
+    } catch (error) {
+      console.error("Failed to load items:", error);
     }
   };
   const handleSubmit = async (e) => {
@@ -24984,26 +25055,28 @@ function PurchaseRequests({ lang, currentUser }) {
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "itemName", children: t.itemName }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Input,
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "item_id", children: "Item *" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                Select,
                 {
-                  id: "itemName",
                   value: formData.itemName,
-                  onChange: (e) => setFormData({ ...formData, itemName: e.target.value }),
-                  required: true
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "itemCode", children: t.code }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Input,
-                {
-                  id: "itemCode",
-                  value: formData.itemCode,
-                  onChange: (e) => setFormData({ ...formData, itemCode: e.target.value })
+                  onValueChange: (val) => {
+                    var _a;
+                    return setFormData({ ...formData, itemName: val, itemCode: ((_a = items.find((i) => i.name == val)) == null ? void 0 : _a.code) || "" });
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select item" }) }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: items.filter((item2) => item2.israw).sort((a, b) => a.code.localeCompare(b.code)).map((item2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectItem, { value: item2.id.toString(), children: [
+                      item2.name,
+                      " - $",
+                      item2.price || 0,
+                      " (Stock:",
+                      " ",
+                      item2.quantity,
+                      ")"
+                    ] }, item2.id)) })
+                  ]
                 }
               )
             ] }),
@@ -25204,7 +25277,7 @@ function Reports({ lang, currentUser }) {
               /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm", children: t.totalRevenue }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-2xl font-bold", children: [
-                  salesReport.totalRevenue.toFixed(2),
+                  (salesReport == null ? void 0 : salesReport.totalRevenue) ? Number(salesReport.totalRevenue).toFixed(2) : 0,
                   " ETB"
                 ] }) })
               ] }),
@@ -25225,7 +25298,7 @@ function Reports({ lang, currentUser }) {
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.itemName }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.totalQuantity }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(TableCell, { children: [
-                  item2.totalRevenue.toFixed(2),
+                  (salesReport == null ? void 0 : salesReport.totalRevenue) ? Number(salesReport.totalRevenue).toFixed(2) : 0,
                   " ETB"
                 ] })
               ] }, i)) })
@@ -25242,13 +25315,13 @@ function Reports({ lang, currentUser }) {
               /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm", children: "Total Order Revenue" }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-2xl font-bold", children: [
-                  ordersReport.totalRevenue.toFixed(2),
+                  (ordersReport == null ? void 0 : ordersReport.totalRevenue) ? Number(ordersReport.totalRevenue).toFixed(2) : 0,
                   " ETB"
                 ] }) })
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm", children: "Total Orders" }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-2xl font-bold", children: ordersReport.totalOrders }) })
+                /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-2xl font-bold", children: ordersReport == null ? void 0 : ordersReport.totalOrders }) })
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-4 md:grid-cols-2", children: [
@@ -25297,7 +25370,7 @@ function Reports({ lang, currentUser }) {
                   /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.itemName }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.totalQuantity }),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs(TableCell, { children: [
-                    item2.totalRevenue.toFixed(2),
+                    item2.totalRevenue ? Number(item2.totalRevenue).toFixed(2) : 0,
                     " ETB"
                   ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.ordersCount })
@@ -25316,7 +25389,7 @@ function Reports({ lang, currentUser }) {
               /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm", children: t.totalEstimatedCost }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-2xl font-bold", children: [
-                  purchaseReport.totalEstimatedCost.toFixed(2),
+                  purchaseReport.totalEstimatedCost ? Number(purchaseReport.totalEstimatedCost).toFixed(2) : 0,
                   " ETB"
                 ] }) })
               ] }),
@@ -25339,7 +25412,7 @@ function Reports({ lang, currentUser }) {
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.itemCode || "-" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.totalQuantity }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(TableCell, { children: [
-                  item2.totalEstimatedCost.toFixed(2),
+                  item2.totalEstimatedCost ? Number(item2.totalEstimatedCost.toFixed(2)) : 0,
                   " ETB"
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.approvedCount }),
@@ -25357,7 +25430,7 @@ function Reports({ lang, currentUser }) {
             /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm", children: t.totalValue }) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-2xl font-bold", children: [
-                inventoryReport.totalValue.toFixed(2),
+                inventoryReport.totalValue ? Number(inventoryReport.totalValue).toFixed(2) : 0,
                 " ETB"
               ] }) })
             ] }),
@@ -25378,9 +25451,9 @@ function Reports({ lang, currentUser }) {
               /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.code }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.name }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.quantity }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.price ? `${item2.price.toFixed(2)} ETB` : "-" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(TableCell, { children: item2.price ? `${item2.price ? Number(item2.price).toFixed(2) : 0} ETB` : "-" }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs(TableCell, { children: [
-                item2.totalValue.toFixed(2),
+                item2.totalValue ? Number(item2.totalValue).toFixed(2) : 0,
                 " ETB"
               ] })
             ] }, item2.id)) })
@@ -25406,7 +25479,7 @@ function Textarea({ className, ...props }) {
 function Announcements({ lang, currentUser }) {
   const [announcements, setAnnouncements] = reactExports.useState([]);
   const [dialogOpen, setDialogOpen] = reactExports.useState(false);
-  const [formData, setFormData] = reactExports.useState({ title: "", content: "" });
+  const [formData, setFormData] = reactExports.useState({ title: "", content: "", imageData: "", imageFileName: "" });
   const { toast: toast2 } = useToast();
   const t = translations[lang];
   reactExports.useEffect(() => {
@@ -25430,12 +25503,16 @@ function Announcements({ lang, currentUser }) {
       });
       toast2({ title: t.success, description: t.announcementCreated });
       setDialogOpen(false);
-      setFormData({ title: "", content: "" });
+      setFormData({ title: "", content: "", imageData: "", imageFileName: "" });
       loadAnnouncements();
     } catch (error) {
       console.error("Failed to create announcement:", error);
       toast2({ title: t.error, description: t.failedToCreateAnnouncement, variant: "destructive" });
     }
+  };
+  const handleUploadImage = async (e) => {
+    const url = await uploadImage(e.target.files[0]);
+    return url;
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between", children: [
@@ -25483,6 +25560,25 @@ function Announcements({ lang, currentUser }) {
               )
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "featureImage", children: "Image/Photo" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Input,
+                {
+                  id: "featureImage",
+                  type: "file",
+                  accept: "image/*",
+                  onChange: async (e) => {
+                    var _a;
+                    const file = (_a = e.target.files) == null ? void 0 : _a[0];
+                    if (file) {
+                      const url = await handleUploadImage(e);
+                      setFormData({ ...formData, imageData: url, imageFileName: file.name });
+                    }
+                  }
+                }
+              )
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "content", children: t.content }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Textarea,
@@ -25500,19 +25596,54 @@ function Announcements({ lang, currentUser }) {
             /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { type: "button", variant: "outline", onClick: () => setDialogOpen(false), children: t.cancel }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { type: "submit", children: t.publish })
           ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-6 mb-2 text-lg font-semibold", children: "Preview" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground", children: t.previewDesc }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(CardHeader, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start justify-between", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-lg", children: formData.title || t.titlePlaceholder }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground", children: (/* @__PURE__ */ new Date()).toLocaleDateString() })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(CardDescription, { children: [
+                t.by,
+                " ",
+                currentUser.role
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { children: [
+              formData.imageData && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "img",
+                {
+                  src: formData.imageData,
+                  alt: "Announcement",
+                  className: "mb-4 max-h-60 w-full object-cover"
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "whitespace-pre-wrap", children: formData.content || t.contentPlaceholder })
+            ] })
+          ] })
         ] })
       ] }) })
     ] })
   ] });
 }
+const ORG_TYPES = ["NGO", "Government", "Private Sector"];
 function OrderManagement() {
   const [orders, setOrders] = reactExports.useState([]);
   const [items, setItems] = reactExports.useState([]);
   const [isCreateOpen, setIsCreateOpen] = reactExports.useState(false);
   const [loading, setLoading] = reactExports.useState(false);
+  const [errors, setErrors] = reactExports.useState(null);
+  const [addresses, setAddresses] = reactExports.useState([]);
+  const [organization, setOrganization] = reactExports.useState(null);
+  const [orgType, setOrgType] = reactExports.useState(null);
   const { toast: toast2 } = useToast();
   const [formData, setFormData] = reactExports.useState({
     customer_name: "",
+    organization: "",
+    orgType: "",
     customer_email: "",
     customer_phone: "",
     customer_address: "",
@@ -25521,9 +25652,17 @@ function OrderManagement() {
     payment_method: "cash",
     notes: ""
   });
+  const getLoggedInUser = () => {
+    const userData = window.localStorage.getItem("user");
+    const user2 = JSON.parse(userData || "{}");
+    if (user2)
+      return user2.role;
+    return null;
+  };
   reactExports.useEffect(() => {
     loadOrders();
     loadItems();
+    loadAddressesLov();
   }, []);
   const loadOrders = async () => {
     try {
@@ -25538,6 +25677,15 @@ function OrderManagement() {
       });
     }
   };
+  const loadAddressesLov = async () => {
+    try {
+      const response = await backend.lov.list({ category: "addresses" });
+      console.log("###addresses", response.values);
+      setAddresses(response.values);
+    } catch (error) {
+      console.error("Failed to load addresses LOV:", error);
+    }
+  };
   const loadItems = async () => {
     try {
       const response = await backend.item.list();
@@ -25548,6 +25696,13 @@ function OrderManagement() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const item2 = items.find((i) => i.id === parseInt(formData.item_id));
+    console.log("###item", item2, formData.quantity);
+    if (!item2 || !item2.quantity || parseInt(item2.quantity) <= parseInt(formData.quantity)) {
+      setErrors("Insufficient stock for the selected item.");
+      return;
+    }
+    setErrors(null);
     setLoading(true);
     try {
       backend.order.create({
@@ -25569,6 +25724,8 @@ function OrderManagement() {
         setFormData({
           customer_name: "",
           customer_email: "",
+          organization: "",
+          orgType: "",
           customer_phone: "",
           customer_address: "",
           item_id: "",
@@ -25631,7 +25788,7 @@ function OrderManagement() {
         /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-3xl font-bold tracking-tight", children: "Order Management" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground", children: "Create and manage customer phone orders" })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog, { open: isCreateOpen, onOpenChange: setIsCreateOpen, children: [
+      getLoggedInUser() !== "manager" && /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog, { open: isCreateOpen, onOpenChange: setIsCreateOpen, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { className: "mr-2 h-4 w-4" }),
           "New Phone Order"
@@ -25659,12 +25816,46 @@ function OrderManagement() {
                 )
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_address", children: "Organization Type (optional)" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  Select,
+                  {
+                    value: formData.orgType,
+                    onValueChange: (value) => setFormData({
+                      ...formData,
+                      orgType: value
+                    }),
+                    required: true,
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select Organization Type" }) }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: ORG_TYPES.map((address, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: address, children: address }, index2)) })
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_name", children: "Organization (Optional)" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Input,
+                  {
+                    id: "organization",
+                    value: formData.organization,
+                    onChange: (e) => setFormData({
+                      ...formData,
+                      organization: e.target.value
+                    }),
+                    required: true
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_phone", children: "Phone Number *" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
                   Input,
                   {
                     id: "customer_phone",
                     value: formData.customer_phone,
+                    placeholder: "+251",
                     onChange: (e) => setFormData({
                       ...formData,
                       customer_phone: e.target.value
@@ -25675,30 +25866,32 @@ function OrderManagement() {
               ] })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_email", children: "Email *" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_email", children: "TIN Number (optional)" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Input,
                 {
                   id: "customer_email",
                   type: "email",
                   value: formData.customer_email,
-                  onChange: (e) => setFormData({ ...formData, customer_email: e.target.value }),
-                  required: true
+                  onChange: (e) => setFormData({ ...formData, customer_email: e.target.value })
                 }
               )
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "customer_address", children: "Delivery Address *" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Textarea,
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                Select,
                 {
-                  id: "customer_address",
                   value: formData.customer_address,
-                  onChange: (e) => setFormData({
+                  onValueChange: (value) => setFormData({
                     ...formData,
-                    customer_address: e.target.value
+                    customer_address: value
                   }),
-                  required: true
+                  required: true,
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select address" }) }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContent, { children: addresses.map((address, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: address, children: address }, index2)) })
+                  ]
                 }
               )
             ] }),
@@ -25770,6 +25963,7 @@ function OrderManagement() {
                 }
               )
             ] }),
+            errors && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-red-500", children: errors }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex justify-end space-x-2", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button,
@@ -25844,6 +26038,11 @@ function OrderManagement() {
 }
 function Dashboard({ currentUser, onLogout }) {
   const [lang, setLang] = reactExports.useState("en");
+  console.log("Rendering Dashboard with currentUser:", currentUser);
+  if (!currentUser) {
+    console.error("No current user found in Dashboard component", currentUser);
+    return null;
+  }
   const t = translations[lang];
   const getAvailableTabs = () => {
     const tabs = [];
@@ -25901,33 +26100,10 @@ function Dashboard({ currentUser, onLogout }) {
     ] }) })
   ] });
 }
-const sampleUsers = [
-  {
-    name: "mohan",
-    email: "mohan@gmail.com",
-    password: "123456",
-    phone: "0938971714",
-    role: "manager"
-  },
-  {
-    name: "henok",
-    email: "henok@gmail.com",
-    password: "123456",
-    phone: "0965290133",
-    role: "finance"
-  },
-  {
-    name: "teferi",
-    email: "teferi@gmail.com",
-    password: "123456",
-    phone: "0911755523",
-    role: "store"
-  }
-];
 const useAuth = () => {
   const [user2, setUser] = reactExports.useState(null);
-  const saveLogin = (user22) => {
-    setUser(user22);
+  const saveLogin = (u) => {
+    setUser(u);
   };
   const getUserToken = () => {
     if (!user2) return void 0;
@@ -25935,12 +26111,9 @@ const useAuth = () => {
   };
   const login = (phone, password, role) => {
     if (!phone || !password || !role) return false;
-    const findUser = sampleUsers.find(
-      (user22) => user22.phone === phone && user22.password === password && user22.role === role
-    );
-    if (!findUser) return false;
-    saveLogin(findUser);
-    localStorage.setItem("user", JSON.stringify(findUser));
+    const newUser = { phone, password, role, name: void 0, email: void 0 };
+    saveLogin(newUser);
+    localStorage.setItem("user", JSON.stringify(newUser));
     return true;
   };
   const logout = () => {
@@ -25950,8 +26123,8 @@ const useAuth = () => {
   const getSavedLogin = () => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
-      const user22 = JSON.parse(savedUser);
-      setUser(user22);
+      const u = JSON.parse(savedUser);
+      setUser(u);
     }
   };
   reactExports.useEffect(() => {
@@ -26048,10 +26221,2272 @@ function LoginPage() {
     ] }) })
   ] }) });
 }
+var DefaultContext = {
+  color: void 0,
+  size: void 0,
+  className: void 0,
+  style: void 0,
+  attr: void 0
+};
+var IconContext = React.createContext && /* @__PURE__ */ React.createContext(DefaultContext);
+var _excluded = ["attr", "size", "title"];
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  for (var key in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key)) {
+      if (excluded.indexOf(key) >= 0) continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+function ownKeys(e, r2) {
+  var t = Object.keys(e);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e);
+    r2 && (o = o.filter(function(r3) {
+      return Object.getOwnPropertyDescriptor(e, r3).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread(e) {
+  for (var r2 = 1; r2 < arguments.length; r2++) {
+    var t = null != arguments[r2] ? arguments[r2] : {};
+    r2 % 2 ? ownKeys(Object(t), true).forEach(function(r3) {
+      _defineProperty(e, r3, t[r3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r3) {
+      Object.defineProperty(e, r3, Object.getOwnPropertyDescriptor(t, r3));
+    });
+  }
+  return e;
+}
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPropertyKey(t) {
+  var i = _toPrimitive(t, "string");
+  return "symbol" == typeof i ? i : i + "";
+}
+function _toPrimitive(t, r2) {
+  if ("object" != typeof t || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r2);
+    if ("object" != typeof i) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r2 ? String : Number)(t);
+}
+function Tree2Element(tree) {
+  return tree && tree.map((node, i) => /* @__PURE__ */ React.createElement(node.tag, _objectSpread({
+    key: i
+  }, node.attr), Tree2Element(node.child)));
+}
+function GenIcon(data) {
+  return (props) => /* @__PURE__ */ React.createElement(IconBase, _extends({
+    attr: _objectSpread({}, data.attr)
+  }, props), Tree2Element(data.child));
+}
+function IconBase(props) {
+  var elem = (conf) => {
+    var {
+      attr,
+      size: size2,
+      title
+    } = props, svgProps = _objectWithoutProperties(props, _excluded);
+    var computedSize = size2 || conf.size || "1em";
+    var className;
+    if (conf.className) className = conf.className;
+    if (props.className) className = (className ? className + " " : "") + props.className;
+    return /* @__PURE__ */ React.createElement("svg", _extends({
+      stroke: "currentColor",
+      fill: "currentColor",
+      strokeWidth: "0"
+    }, conf.attr, attr, svgProps, {
+      className,
+      style: _objectSpread(_objectSpread({
+        color: props.color || conf.color
+      }, conf.style), props.style),
+      height: computedSize,
+      width: computedSize,
+      xmlns: "http://www.w3.org/2000/svg"
+    }), title && /* @__PURE__ */ React.createElement("title", null, title), props.children);
+  };
+  return IconContext !== void 0 ? /* @__PURE__ */ React.createElement(IconContext.Consumer, null, (conf) => elem(conf)) : elem(DefaultContext);
+}
+function FaArrowRight(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" }, "child": [] }] })(props);
+}
+function FaCalendarAlt(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6 0-12-5.4-12-12v-40zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z" }, "child": [] }] })(props);
+}
+function FaEnvelope(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 512 512" }, "child": [{ "tag": "path", "attr": { "d": "M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" }, "child": [] }] })(props);
+}
+function FaMapMarkerAlt(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 384 512" }, "child": [{ "tag": "path", "attr": { "d": "M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" }, "child": [] }] })(props);
+}
+function FaNewspaper(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 576 512" }, "child": [{ "tag": "path", "attr": { "d": "M552 64H88c-13.255 0-24 10.745-24 24v8H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h472c26.51 0 48-21.49 48-48V88c0-13.255-10.745-24-24-24zM56 400a8 8 0 0 1-8-8V144h16v248a8 8 0 0 1-8 8zm236-16H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm-208-96H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm0-96H140c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h360c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12z" }, "child": [] }] })(props);
+}
+function FaPhoneAlt(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 512 512" }, "child": [{ "tag": "path", "attr": { "d": "M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z" }, "child": [] }] })(props);
+}
+function FaUser(props) {
+  return GenIcon({ "attr": { "viewBox": "0 0 448 512" }, "child": [{ "tag": "path", "attr": { "d": "M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" }, "child": [] }] })(props);
+}
+function isObject$1(subject) {
+  return Object.prototype.toString.call(subject) === "[object Object]";
+}
+function isRecord(subject) {
+  return isObject$1(subject) || Array.isArray(subject);
+}
+function canUseDOM() {
+  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
+}
+function areOptionsEqual(optionsA, optionsB) {
+  const optionsAKeys = Object.keys(optionsA);
+  const optionsBKeys = Object.keys(optionsB);
+  if (optionsAKeys.length !== optionsBKeys.length) return false;
+  const breakpointsA = JSON.stringify(Object.keys(optionsA.breakpoints || {}));
+  const breakpointsB = JSON.stringify(Object.keys(optionsB.breakpoints || {}));
+  if (breakpointsA !== breakpointsB) return false;
+  return optionsAKeys.every((key) => {
+    const valueA = optionsA[key];
+    const valueB = optionsB[key];
+    if (typeof valueA === "function") return `${valueA}` === `${valueB}`;
+    if (!isRecord(valueA) || !isRecord(valueB)) return valueA === valueB;
+    return areOptionsEqual(valueA, valueB);
+  });
+}
+function sortAndMapPluginToOptions(plugins) {
+  return plugins.concat().sort((a, b) => a.name > b.name ? 1 : -1).map((plugin) => plugin.options);
+}
+function arePluginsEqual(pluginsA, pluginsB) {
+  if (pluginsA.length !== pluginsB.length) return false;
+  const optionsA = sortAndMapPluginToOptions(pluginsA);
+  const optionsB = sortAndMapPluginToOptions(pluginsB);
+  return optionsA.every((optionA, index2) => {
+    const optionB = optionsB[index2];
+    return areOptionsEqual(optionA, optionB);
+  });
+}
+function isNumber(subject) {
+  return typeof subject === "number";
+}
+function isString(subject) {
+  return typeof subject === "string";
+}
+function isBoolean(subject) {
+  return typeof subject === "boolean";
+}
+function isObject(subject) {
+  return Object.prototype.toString.call(subject) === "[object Object]";
+}
+function mathAbs(n) {
+  return Math.abs(n);
+}
+function mathSign(n) {
+  return Math.sign(n);
+}
+function deltaAbs(valueB, valueA) {
+  return mathAbs(valueB - valueA);
+}
+function factorAbs(valueB, valueA) {
+  if (valueB === 0 || valueA === 0) return 0;
+  if (mathAbs(valueB) <= mathAbs(valueA)) return 0;
+  const diff = deltaAbs(mathAbs(valueB), mathAbs(valueA));
+  return mathAbs(diff / valueB);
+}
+function roundToTwoDecimals(num) {
+  return Math.round(num * 100) / 100;
+}
+function arrayKeys(array) {
+  return objectKeys(array).map(Number);
+}
+function arrayLast(array) {
+  return array[arrayLastIndex(array)];
+}
+function arrayLastIndex(array) {
+  return Math.max(0, array.length - 1);
+}
+function arrayIsLastIndex(array, index2) {
+  return index2 === arrayLastIndex(array);
+}
+function arrayFromNumber(n, startAt = 0) {
+  return Array.from(Array(n), (_, i) => startAt + i);
+}
+function objectKeys(object) {
+  return Object.keys(object);
+}
+function objectsMergeDeep(objectA, objectB) {
+  return [objectA, objectB].reduce((mergedObjects, currentObject) => {
+    objectKeys(currentObject).forEach((key) => {
+      const valueA = mergedObjects[key];
+      const valueB = currentObject[key];
+      const areObjects = isObject(valueA) && isObject(valueB);
+      mergedObjects[key] = areObjects ? objectsMergeDeep(valueA, valueB) : valueB;
+    });
+    return mergedObjects;
+  }, {});
+}
+function isMouseEvent(evt, ownerWindow) {
+  return typeof ownerWindow.MouseEvent !== "undefined" && evt instanceof ownerWindow.MouseEvent;
+}
+function Alignment(align, viewSize) {
+  const predefined = {
+    start,
+    center,
+    end
+  };
+  function start() {
+    return 0;
+  }
+  function center(n) {
+    return end(n) / 2;
+  }
+  function end(n) {
+    return viewSize - n;
+  }
+  function measure(n, index2) {
+    if (isString(align)) return predefined[align](n);
+    return align(viewSize, n, index2);
+  }
+  const self = {
+    measure
+  };
+  return self;
+}
+function EventStore() {
+  let listeners2 = [];
+  function add(node, type, handler, options = {
+    passive: true
+  }) {
+    let removeListener;
+    if ("addEventListener" in node) {
+      node.addEventListener(type, handler, options);
+      removeListener = () => node.removeEventListener(type, handler, options);
+    } else {
+      const legacyMediaQueryList = node;
+      legacyMediaQueryList.addListener(handler);
+      removeListener = () => legacyMediaQueryList.removeListener(handler);
+    }
+    listeners2.push(removeListener);
+    return self;
+  }
+  function clear() {
+    listeners2 = listeners2.filter((remove) => remove());
+  }
+  const self = {
+    add,
+    clear
+  };
+  return self;
+}
+function Animations(ownerDocument, ownerWindow, update, render) {
+  const documentVisibleHandler = EventStore();
+  const fixedTimeStep = 1e3 / 60;
+  let lastTimeStamp = null;
+  let accumulatedTime = 0;
+  let animationId = 0;
+  function init() {
+    documentVisibleHandler.add(ownerDocument, "visibilitychange", () => {
+      if (ownerDocument.hidden) reset();
+    });
+  }
+  function destroy() {
+    stop();
+    documentVisibleHandler.clear();
+  }
+  function animate(timeStamp) {
+    if (!animationId) return;
+    if (!lastTimeStamp) {
+      lastTimeStamp = timeStamp;
+      update();
+      update();
+    }
+    const timeElapsed = timeStamp - lastTimeStamp;
+    lastTimeStamp = timeStamp;
+    accumulatedTime += timeElapsed;
+    while (accumulatedTime >= fixedTimeStep) {
+      update();
+      accumulatedTime -= fixedTimeStep;
+    }
+    const alpha = accumulatedTime / fixedTimeStep;
+    render(alpha);
+    if (animationId) {
+      animationId = ownerWindow.requestAnimationFrame(animate);
+    }
+  }
+  function start() {
+    if (animationId) return;
+    animationId = ownerWindow.requestAnimationFrame(animate);
+  }
+  function stop() {
+    ownerWindow.cancelAnimationFrame(animationId);
+    lastTimeStamp = null;
+    accumulatedTime = 0;
+    animationId = 0;
+  }
+  function reset() {
+    lastTimeStamp = null;
+    accumulatedTime = 0;
+  }
+  const self = {
+    init,
+    destroy,
+    start,
+    stop,
+    update,
+    render
+  };
+  return self;
+}
+function Axis(axis, contentDirection) {
+  const isRightToLeft = contentDirection === "rtl";
+  const isVertical = axis === "y";
+  const scroll = isVertical ? "y" : "x";
+  const cross = isVertical ? "x" : "y";
+  const sign = !isVertical && isRightToLeft ? -1 : 1;
+  const startEdge = getStartEdge();
+  const endEdge = getEndEdge();
+  function measureSize(nodeRect) {
+    const {
+      height,
+      width
+    } = nodeRect;
+    return isVertical ? height : width;
+  }
+  function getStartEdge() {
+    if (isVertical) return "top";
+    return isRightToLeft ? "right" : "left";
+  }
+  function getEndEdge() {
+    if (isVertical) return "bottom";
+    return isRightToLeft ? "left" : "right";
+  }
+  function direction(n) {
+    return n * sign;
+  }
+  const self = {
+    scroll,
+    cross,
+    startEdge,
+    endEdge,
+    measureSize,
+    direction
+  };
+  return self;
+}
+function Limit(min2 = 0, max2 = 0) {
+  const length = mathAbs(min2 - max2);
+  function reachedMin(n) {
+    return n < min2;
+  }
+  function reachedMax(n) {
+    return n > max2;
+  }
+  function reachedAny(n) {
+    return reachedMin(n) || reachedMax(n);
+  }
+  function constrain(n) {
+    if (!reachedAny(n)) return n;
+    return reachedMin(n) ? min2 : max2;
+  }
+  function removeOffset(n) {
+    if (!length) return n;
+    return n - length * Math.ceil((n - max2) / length);
+  }
+  const self = {
+    length,
+    max: max2,
+    min: min2,
+    constrain,
+    reachedAny,
+    reachedMax,
+    reachedMin,
+    removeOffset
+  };
+  return self;
+}
+function Counter(max2, start, loop) {
+  const {
+    constrain
+  } = Limit(0, max2);
+  const loopEnd = max2 + 1;
+  let counter = withinLimit(start);
+  function withinLimit(n) {
+    return !loop ? constrain(n) : mathAbs((loopEnd + n) % loopEnd);
+  }
+  function get() {
+    return counter;
+  }
+  function set(n) {
+    counter = withinLimit(n);
+    return self;
+  }
+  function add(n) {
+    return clone().set(get() + n);
+  }
+  function clone() {
+    return Counter(max2, get(), loop);
+  }
+  const self = {
+    get,
+    set,
+    add,
+    clone
+  };
+  return self;
+}
+function DragHandler(axis, rootNode, ownerDocument, ownerWindow, target, dragTracker, location, animation, scrollTo, scrollBody, scrollTarget, index2, eventHandler, percentOfView, dragFree, dragThreshold, skipSnaps, baseFriction, watchDrag) {
+  const {
+    cross: crossAxis,
+    direction
+  } = axis;
+  const focusNodes = ["INPUT", "SELECT", "TEXTAREA"];
+  const nonPassiveEvent = {
+    passive: false
+  };
+  const initEvents = EventStore();
+  const dragEvents = EventStore();
+  const goToNextThreshold = Limit(50, 225).constrain(percentOfView.measure(20));
+  const snapForceBoost = {
+    mouse: 300,
+    touch: 400
+  };
+  const freeForceBoost = {
+    mouse: 500,
+    touch: 600
+  };
+  const baseSpeed = dragFree ? 43 : 25;
+  let isMoving = false;
+  let startScroll = 0;
+  let startCross = 0;
+  let pointerIsDown = false;
+  let preventScroll = false;
+  let preventClick = false;
+  let isMouse = false;
+  function init(emblaApi) {
+    if (!watchDrag) return;
+    function downIfAllowed(evt) {
+      if (isBoolean(watchDrag) || watchDrag(emblaApi, evt)) down(evt);
+    }
+    const node = rootNode;
+    initEvents.add(node, "dragstart", (evt) => evt.preventDefault(), nonPassiveEvent).add(node, "touchmove", () => void 0, nonPassiveEvent).add(node, "touchend", () => void 0).add(node, "touchstart", downIfAllowed).add(node, "mousedown", downIfAllowed).add(node, "touchcancel", up).add(node, "contextmenu", up).add(node, "click", click, true);
+  }
+  function destroy() {
+    initEvents.clear();
+    dragEvents.clear();
+  }
+  function addDragEvents() {
+    const node = isMouse ? ownerDocument : rootNode;
+    dragEvents.add(node, "touchmove", move, nonPassiveEvent).add(node, "touchend", up).add(node, "mousemove", move, nonPassiveEvent).add(node, "mouseup", up);
+  }
+  function isFocusNode(node) {
+    const nodeName = node.nodeName || "";
+    return focusNodes.includes(nodeName);
+  }
+  function forceBoost() {
+    const boost = dragFree ? freeForceBoost : snapForceBoost;
+    const type = isMouse ? "mouse" : "touch";
+    return boost[type];
+  }
+  function allowedForce(force, targetChanged) {
+    const next = index2.add(mathSign(force) * -1);
+    const baseForce = scrollTarget.byDistance(force, !dragFree).distance;
+    if (dragFree || mathAbs(force) < goToNextThreshold) return baseForce;
+    if (skipSnaps && targetChanged) return baseForce * 0.5;
+    return scrollTarget.byIndex(next.get(), 0).distance;
+  }
+  function down(evt) {
+    const isMouseEvt = isMouseEvent(evt, ownerWindow);
+    isMouse = isMouseEvt;
+    preventClick = dragFree && isMouseEvt && !evt.buttons && isMoving;
+    isMoving = deltaAbs(target.get(), location.get()) >= 2;
+    if (isMouseEvt && evt.button !== 0) return;
+    if (isFocusNode(evt.target)) return;
+    pointerIsDown = true;
+    dragTracker.pointerDown(evt);
+    scrollBody.useFriction(0).useDuration(0);
+    target.set(location);
+    addDragEvents();
+    startScroll = dragTracker.readPoint(evt);
+    startCross = dragTracker.readPoint(evt, crossAxis);
+    eventHandler.emit("pointerDown");
+  }
+  function move(evt) {
+    const isTouchEvt = !isMouseEvent(evt, ownerWindow);
+    if (isTouchEvt && evt.touches.length >= 2) return up(evt);
+    const lastScroll = dragTracker.readPoint(evt);
+    const lastCross = dragTracker.readPoint(evt, crossAxis);
+    const diffScroll = deltaAbs(lastScroll, startScroll);
+    const diffCross = deltaAbs(lastCross, startCross);
+    if (!preventScroll && !isMouse) {
+      if (!evt.cancelable) return up(evt);
+      preventScroll = diffScroll > diffCross;
+      if (!preventScroll) return up(evt);
+    }
+    const diff = dragTracker.pointerMove(evt);
+    if (diffScroll > dragThreshold) preventClick = true;
+    scrollBody.useFriction(0.3).useDuration(0.75);
+    animation.start();
+    target.add(direction(diff));
+    evt.preventDefault();
+  }
+  function up(evt) {
+    const currentLocation = scrollTarget.byDistance(0, false);
+    const targetChanged = currentLocation.index !== index2.get();
+    const rawForce = dragTracker.pointerUp(evt) * forceBoost();
+    const force = allowedForce(direction(rawForce), targetChanged);
+    const forceFactor = factorAbs(rawForce, force);
+    const speed = baseSpeed - 10 * forceFactor;
+    const friction = baseFriction + forceFactor / 50;
+    preventScroll = false;
+    pointerIsDown = false;
+    dragEvents.clear();
+    scrollBody.useDuration(speed).useFriction(friction);
+    scrollTo.distance(force, !dragFree);
+    isMouse = false;
+    eventHandler.emit("pointerUp");
+  }
+  function click(evt) {
+    if (preventClick) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      preventClick = false;
+    }
+  }
+  function pointerDown() {
+    return pointerIsDown;
+  }
+  const self = {
+    init,
+    destroy,
+    pointerDown
+  };
+  return self;
+}
+function DragTracker(axis, ownerWindow) {
+  const logInterval = 170;
+  let startEvent;
+  let lastEvent;
+  function readTime(evt) {
+    return evt.timeStamp;
+  }
+  function readPoint(evt, evtAxis) {
+    const property = evtAxis || axis.scroll;
+    const coord = `client${property === "x" ? "X" : "Y"}`;
+    return (isMouseEvent(evt, ownerWindow) ? evt : evt.touches[0])[coord];
+  }
+  function pointerDown(evt) {
+    startEvent = evt;
+    lastEvent = evt;
+    return readPoint(evt);
+  }
+  function pointerMove(evt) {
+    const diff = readPoint(evt) - readPoint(lastEvent);
+    const expired = readTime(evt) - readTime(startEvent) > logInterval;
+    lastEvent = evt;
+    if (expired) startEvent = evt;
+    return diff;
+  }
+  function pointerUp(evt) {
+    if (!startEvent || !lastEvent) return 0;
+    const diffDrag = readPoint(lastEvent) - readPoint(startEvent);
+    const diffTime = readTime(evt) - readTime(startEvent);
+    const expired = readTime(evt) - readTime(lastEvent) > logInterval;
+    const force = diffDrag / diffTime;
+    const isFlick = diffTime && !expired && mathAbs(force) > 0.1;
+    return isFlick ? force : 0;
+  }
+  const self = {
+    pointerDown,
+    pointerMove,
+    pointerUp,
+    readPoint
+  };
+  return self;
+}
+function NodeRects() {
+  function measure(node) {
+    const {
+      offsetTop,
+      offsetLeft,
+      offsetWidth,
+      offsetHeight
+    } = node;
+    const offset2 = {
+      top: offsetTop,
+      right: offsetLeft + offsetWidth,
+      bottom: offsetTop + offsetHeight,
+      left: offsetLeft,
+      width: offsetWidth,
+      height: offsetHeight
+    };
+    return offset2;
+  }
+  const self = {
+    measure
+  };
+  return self;
+}
+function PercentOfView(viewSize) {
+  function measure(n) {
+    return viewSize * (n / 100);
+  }
+  const self = {
+    measure
+  };
+  return self;
+}
+function ResizeHandler(container, eventHandler, ownerWindow, slides, axis, watchResize, nodeRects) {
+  const observeNodes = [container].concat(slides);
+  let resizeObserver;
+  let containerSize;
+  let slideSizes = [];
+  let destroyed = false;
+  function readSize(node) {
+    return axis.measureSize(nodeRects.measure(node));
+  }
+  function init(emblaApi) {
+    if (!watchResize) return;
+    containerSize = readSize(container);
+    slideSizes = slides.map(readSize);
+    function defaultCallback(entries) {
+      for (const entry of entries) {
+        if (destroyed) return;
+        const isContainer = entry.target === container;
+        const slideIndex = slides.indexOf(entry.target);
+        const lastSize = isContainer ? containerSize : slideSizes[slideIndex];
+        const newSize = readSize(isContainer ? container : slides[slideIndex]);
+        const diffSize = mathAbs(newSize - lastSize);
+        if (diffSize >= 0.5) {
+          emblaApi.reInit();
+          eventHandler.emit("resize");
+          break;
+        }
+      }
+    }
+    resizeObserver = new ResizeObserver((entries) => {
+      if (isBoolean(watchResize) || watchResize(emblaApi, entries)) {
+        defaultCallback(entries);
+      }
+    });
+    ownerWindow.requestAnimationFrame(() => {
+      observeNodes.forEach((node) => resizeObserver.observe(node));
+    });
+  }
+  function destroy() {
+    destroyed = true;
+    if (resizeObserver) resizeObserver.disconnect();
+  }
+  const self = {
+    init,
+    destroy
+  };
+  return self;
+}
+function ScrollBody(location, offsetLocation, previousLocation, target, baseDuration, baseFriction) {
+  let scrollVelocity = 0;
+  let scrollDirection = 0;
+  let scrollDuration = baseDuration;
+  let scrollFriction = baseFriction;
+  let rawLocation = location.get();
+  let rawLocationPrevious = 0;
+  function seek() {
+    const displacement = target.get() - location.get();
+    const isInstant = !scrollDuration;
+    let scrollDistance = 0;
+    if (isInstant) {
+      scrollVelocity = 0;
+      previousLocation.set(target);
+      location.set(target);
+      scrollDistance = displacement;
+    } else {
+      previousLocation.set(location);
+      scrollVelocity += displacement / scrollDuration;
+      scrollVelocity *= scrollFriction;
+      rawLocation += scrollVelocity;
+      location.add(scrollVelocity);
+      scrollDistance = rawLocation - rawLocationPrevious;
+    }
+    scrollDirection = mathSign(scrollDistance);
+    rawLocationPrevious = rawLocation;
+    return self;
+  }
+  function settled() {
+    const diff = target.get() - offsetLocation.get();
+    return mathAbs(diff) < 1e-3;
+  }
+  function duration() {
+    return scrollDuration;
+  }
+  function direction() {
+    return scrollDirection;
+  }
+  function velocity() {
+    return scrollVelocity;
+  }
+  function useBaseDuration() {
+    return useDuration(baseDuration);
+  }
+  function useBaseFriction() {
+    return useFriction(baseFriction);
+  }
+  function useDuration(n) {
+    scrollDuration = n;
+    return self;
+  }
+  function useFriction(n) {
+    scrollFriction = n;
+    return self;
+  }
+  const self = {
+    direction,
+    duration,
+    velocity,
+    seek,
+    settled,
+    useBaseFriction,
+    useBaseDuration,
+    useFriction,
+    useDuration
+  };
+  return self;
+}
+function ScrollBounds(limit, location, target, scrollBody, percentOfView) {
+  const pullBackThreshold = percentOfView.measure(10);
+  const edgeOffsetTolerance = percentOfView.measure(50);
+  const frictionLimit = Limit(0.1, 0.99);
+  let disabled = false;
+  function shouldConstrain() {
+    if (disabled) return false;
+    if (!limit.reachedAny(target.get())) return false;
+    if (!limit.reachedAny(location.get())) return false;
+    return true;
+  }
+  function constrain(pointerDown) {
+    if (!shouldConstrain()) return;
+    const edge = limit.reachedMin(location.get()) ? "min" : "max";
+    const diffToEdge = mathAbs(limit[edge] - location.get());
+    const diffToTarget = target.get() - location.get();
+    const friction = frictionLimit.constrain(diffToEdge / edgeOffsetTolerance);
+    target.subtract(diffToTarget * friction);
+    if (!pointerDown && mathAbs(diffToTarget) < pullBackThreshold) {
+      target.set(limit.constrain(target.get()));
+      scrollBody.useDuration(25).useBaseFriction();
+    }
+  }
+  function toggleActive(active) {
+    disabled = !active;
+  }
+  const self = {
+    shouldConstrain,
+    constrain,
+    toggleActive
+  };
+  return self;
+}
+function ScrollContain(viewSize, contentSize, snapsAligned, containScroll, pixelTolerance) {
+  const scrollBounds = Limit(-contentSize + viewSize, 0);
+  const snapsBounded = measureBounded();
+  const scrollContainLimit = findScrollContainLimit();
+  const snapsContained = measureContained();
+  function usePixelTolerance(bound, snap) {
+    return deltaAbs(bound, snap) <= 1;
+  }
+  function findScrollContainLimit() {
+    const startSnap = snapsBounded[0];
+    const endSnap = arrayLast(snapsBounded);
+    const min2 = snapsBounded.lastIndexOf(startSnap);
+    const max2 = snapsBounded.indexOf(endSnap) + 1;
+    return Limit(min2, max2);
+  }
+  function measureBounded() {
+    return snapsAligned.map((snapAligned, index2) => {
+      const {
+        min: min2,
+        max: max2
+      } = scrollBounds;
+      const snap = scrollBounds.constrain(snapAligned);
+      const isFirst = !index2;
+      const isLast = arrayIsLastIndex(snapsAligned, index2);
+      if (isFirst) return max2;
+      if (isLast) return min2;
+      if (usePixelTolerance(min2, snap)) return min2;
+      if (usePixelTolerance(max2, snap)) return max2;
+      return snap;
+    }).map((scrollBound) => parseFloat(scrollBound.toFixed(3)));
+  }
+  function measureContained() {
+    if (contentSize <= viewSize + pixelTolerance) return [scrollBounds.max];
+    if (containScroll === "keepSnaps") return snapsBounded;
+    const {
+      min: min2,
+      max: max2
+    } = scrollContainLimit;
+    return snapsBounded.slice(min2, max2);
+  }
+  const self = {
+    snapsContained,
+    scrollContainLimit
+  };
+  return self;
+}
+function ScrollLimit(contentSize, scrollSnaps, loop) {
+  const max2 = scrollSnaps[0];
+  const min2 = loop ? max2 - contentSize : arrayLast(scrollSnaps);
+  const limit = Limit(min2, max2);
+  const self = {
+    limit
+  };
+  return self;
+}
+function ScrollLooper(contentSize, limit, location, vectors) {
+  const jointSafety = 0.1;
+  const min2 = limit.min + jointSafety;
+  const max2 = limit.max + jointSafety;
+  const {
+    reachedMin,
+    reachedMax
+  } = Limit(min2, max2);
+  function shouldLoop(direction) {
+    if (direction === 1) return reachedMax(location.get());
+    if (direction === -1) return reachedMin(location.get());
+    return false;
+  }
+  function loop(direction) {
+    if (!shouldLoop(direction)) return;
+    const loopDistance = contentSize * (direction * -1);
+    vectors.forEach((v) => v.add(loopDistance));
+  }
+  const self = {
+    loop
+  };
+  return self;
+}
+function ScrollProgress(limit) {
+  const {
+    max: max2,
+    length
+  } = limit;
+  function get(n) {
+    const currentLocation = n - max2;
+    return length ? currentLocation / -length : 0;
+  }
+  const self = {
+    get
+  };
+  return self;
+}
+function ScrollSnaps(axis, alignment, containerRect, slideRects, slidesToScroll) {
+  const {
+    startEdge,
+    endEdge
+  } = axis;
+  const {
+    groupSlides
+  } = slidesToScroll;
+  const alignments = measureSizes().map(alignment.measure);
+  const snaps = measureUnaligned();
+  const snapsAligned = measureAligned();
+  function measureSizes() {
+    return groupSlides(slideRects).map((rects) => arrayLast(rects)[endEdge] - rects[0][startEdge]).map(mathAbs);
+  }
+  function measureUnaligned() {
+    return slideRects.map((rect) => containerRect[startEdge] - rect[startEdge]).map((snap) => -mathAbs(snap));
+  }
+  function measureAligned() {
+    return groupSlides(snaps).map((g) => g[0]).map((snap, index2) => snap + alignments[index2]);
+  }
+  const self = {
+    snaps,
+    snapsAligned
+  };
+  return self;
+}
+function SlideRegistry(containSnaps, containScroll, scrollSnaps, scrollContainLimit, slidesToScroll, slideIndexes) {
+  const {
+    groupSlides
+  } = slidesToScroll;
+  const {
+    min: min2,
+    max: max2
+  } = scrollContainLimit;
+  const slideRegistry = createSlideRegistry();
+  function createSlideRegistry() {
+    const groupedSlideIndexes = groupSlides(slideIndexes);
+    const doNotContain = !containSnaps || containScroll === "keepSnaps";
+    if (scrollSnaps.length === 1) return [slideIndexes];
+    if (doNotContain) return groupedSlideIndexes;
+    return groupedSlideIndexes.slice(min2, max2).map((group, index2, groups) => {
+      const isFirst = !index2;
+      const isLast = arrayIsLastIndex(groups, index2);
+      if (isFirst) {
+        const range = arrayLast(groups[0]) + 1;
+        return arrayFromNumber(range);
+      }
+      if (isLast) {
+        const range = arrayLastIndex(slideIndexes) - arrayLast(groups)[0] + 1;
+        return arrayFromNumber(range, arrayLast(groups)[0]);
+      }
+      return group;
+    });
+  }
+  const self = {
+    slideRegistry
+  };
+  return self;
+}
+function ScrollTarget(loop, scrollSnaps, contentSize, limit, targetVector) {
+  const {
+    reachedAny,
+    removeOffset,
+    constrain
+  } = limit;
+  function minDistance(distances) {
+    return distances.concat().sort((a, b) => mathAbs(a) - mathAbs(b))[0];
+  }
+  function findTargetSnap(target) {
+    const distance = loop ? removeOffset(target) : constrain(target);
+    const ascDiffsToSnaps = scrollSnaps.map((snap, index3) => ({
+      diff: shortcut(snap - distance, 0),
+      index: index3
+    })).sort((d1, d2) => mathAbs(d1.diff) - mathAbs(d2.diff));
+    const {
+      index: index2
+    } = ascDiffsToSnaps[0];
+    return {
+      index: index2,
+      distance
+    };
+  }
+  function shortcut(target, direction) {
+    const targets = [target, target + contentSize, target - contentSize];
+    if (!loop) return target;
+    if (!direction) return minDistance(targets);
+    const matchingTargets = targets.filter((t) => mathSign(t) === direction);
+    if (matchingTargets.length) return minDistance(matchingTargets);
+    return arrayLast(targets) - contentSize;
+  }
+  function byIndex(index2, direction) {
+    const diffToSnap = scrollSnaps[index2] - targetVector.get();
+    const distance = shortcut(diffToSnap, direction);
+    return {
+      index: index2,
+      distance
+    };
+  }
+  function byDistance(distance, snap) {
+    const target = targetVector.get() + distance;
+    const {
+      index: index2,
+      distance: targetSnapDistance
+    } = findTargetSnap(target);
+    const reachedBound = !loop && reachedAny(target);
+    if (!snap || reachedBound) return {
+      index: index2,
+      distance
+    };
+    const diffToSnap = scrollSnaps[index2] - targetSnapDistance;
+    const snapDistance = distance + shortcut(diffToSnap, 0);
+    return {
+      index: index2,
+      distance: snapDistance
+    };
+  }
+  const self = {
+    byDistance,
+    byIndex,
+    shortcut
+  };
+  return self;
+}
+function ScrollTo(animation, indexCurrent, indexPrevious, scrollBody, scrollTarget, targetVector, eventHandler) {
+  function scrollTo(target) {
+    const distanceDiff = target.distance;
+    const indexDiff = target.index !== indexCurrent.get();
+    targetVector.add(distanceDiff);
+    if (distanceDiff) {
+      if (scrollBody.duration()) {
+        animation.start();
+      } else {
+        animation.update();
+        animation.render(1);
+        animation.update();
+      }
+    }
+    if (indexDiff) {
+      indexPrevious.set(indexCurrent.get());
+      indexCurrent.set(target.index);
+      eventHandler.emit("select");
+    }
+  }
+  function distance(n, snap) {
+    const target = scrollTarget.byDistance(n, snap);
+    scrollTo(target);
+  }
+  function index2(n, direction) {
+    const targetIndex = indexCurrent.clone().set(n);
+    const target = scrollTarget.byIndex(targetIndex.get(), direction);
+    scrollTo(target);
+  }
+  const self = {
+    distance,
+    index: index2
+  };
+  return self;
+}
+function SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStore, eventHandler, watchFocus) {
+  const focusListenerOptions = {
+    passive: true,
+    capture: true
+  };
+  let lastTabPressTime = 0;
+  function init(emblaApi) {
+    if (!watchFocus) return;
+    function defaultCallback(index2) {
+      const nowTime = (/* @__PURE__ */ new Date()).getTime();
+      const diffTime = nowTime - lastTabPressTime;
+      if (diffTime > 10) return;
+      eventHandler.emit("slideFocusStart");
+      root.scrollLeft = 0;
+      const group = slideRegistry.findIndex((group2) => group2.includes(index2));
+      if (!isNumber(group)) return;
+      scrollBody.useDuration(0);
+      scrollTo.index(group, 0);
+      eventHandler.emit("slideFocus");
+    }
+    eventStore.add(document, "keydown", registerTabPress, false);
+    slides.forEach((slide, slideIndex) => {
+      eventStore.add(slide, "focus", (evt) => {
+        if (isBoolean(watchFocus) || watchFocus(emblaApi, evt)) {
+          defaultCallback(slideIndex);
+        }
+      }, focusListenerOptions);
+    });
+  }
+  function registerTabPress(event) {
+    if (event.code === "Tab") lastTabPressTime = (/* @__PURE__ */ new Date()).getTime();
+  }
+  const self = {
+    init
+  };
+  return self;
+}
+function Vector1D(initialValue) {
+  let value = initialValue;
+  function get() {
+    return value;
+  }
+  function set(n) {
+    value = normalizeInput(n);
+  }
+  function add(n) {
+    value += normalizeInput(n);
+  }
+  function subtract(n) {
+    value -= normalizeInput(n);
+  }
+  function normalizeInput(n) {
+    return isNumber(n) ? n : n.get();
+  }
+  const self = {
+    get,
+    set,
+    add,
+    subtract
+  };
+  return self;
+}
+function Translate(axis, container) {
+  const translate = axis.scroll === "x" ? x : y;
+  const containerStyle = container.style;
+  let previousTarget = null;
+  let disabled = false;
+  function x(n) {
+    return `translate3d(${n}px,0px,0px)`;
+  }
+  function y(n) {
+    return `translate3d(0px,${n}px,0px)`;
+  }
+  function to(target) {
+    if (disabled) return;
+    const newTarget = roundToTwoDecimals(axis.direction(target));
+    if (newTarget === previousTarget) return;
+    containerStyle.transform = translate(newTarget);
+    previousTarget = newTarget;
+  }
+  function toggleActive(active) {
+    disabled = !active;
+  }
+  function clear() {
+    if (disabled) return;
+    containerStyle.transform = "";
+    if (!container.getAttribute("style")) container.removeAttribute("style");
+  }
+  const self = {
+    clear,
+    to,
+    toggleActive
+  };
+  return self;
+}
+function SlideLooper(axis, viewSize, contentSize, slideSizes, slideSizesWithGaps, snaps, scrollSnaps, location, slides) {
+  const roundingSafety = 0.5;
+  const ascItems = arrayKeys(slideSizesWithGaps);
+  const descItems = arrayKeys(slideSizesWithGaps).reverse();
+  const loopPoints = startPoints().concat(endPoints());
+  function removeSlideSizes(indexes, from) {
+    return indexes.reduce((a, i) => {
+      return a - slideSizesWithGaps[i];
+    }, from);
+  }
+  function slidesInGap(indexes, gap) {
+    return indexes.reduce((a, i) => {
+      const remainingGap = removeSlideSizes(a, gap);
+      return remainingGap > 0 ? a.concat([i]) : a;
+    }, []);
+  }
+  function findSlideBounds(offset2) {
+    return snaps.map((snap, index2) => ({
+      start: snap - slideSizes[index2] + roundingSafety + offset2,
+      end: snap + viewSize - roundingSafety + offset2
+    }));
+  }
+  function findLoopPoints(indexes, offset2, isEndEdge) {
+    const slideBounds = findSlideBounds(offset2);
+    return indexes.map((index2) => {
+      const initial = isEndEdge ? 0 : -contentSize;
+      const altered = isEndEdge ? contentSize : 0;
+      const boundEdge = isEndEdge ? "end" : "start";
+      const loopPoint = slideBounds[index2][boundEdge];
+      return {
+        index: index2,
+        loopPoint,
+        slideLocation: Vector1D(-1),
+        translate: Translate(axis, slides[index2]),
+        target: () => location.get() > loopPoint ? initial : altered
+      };
+    });
+  }
+  function startPoints() {
+    const gap = scrollSnaps[0];
+    const indexes = slidesInGap(descItems, gap);
+    return findLoopPoints(indexes, contentSize, false);
+  }
+  function endPoints() {
+    const gap = viewSize - scrollSnaps[0] - 1;
+    const indexes = slidesInGap(ascItems, gap);
+    return findLoopPoints(indexes, -contentSize, true);
+  }
+  function canLoop() {
+    return loopPoints.every(({
+      index: index2
+    }) => {
+      const otherIndexes = ascItems.filter((i) => i !== index2);
+      return removeSlideSizes(otherIndexes, viewSize) <= 0.1;
+    });
+  }
+  function loop() {
+    loopPoints.forEach((loopPoint) => {
+      const {
+        target,
+        translate,
+        slideLocation
+      } = loopPoint;
+      const shiftLocation = target();
+      if (shiftLocation === slideLocation.get()) return;
+      translate.to(shiftLocation);
+      slideLocation.set(shiftLocation);
+    });
+  }
+  function clear() {
+    loopPoints.forEach((loopPoint) => loopPoint.translate.clear());
+  }
+  const self = {
+    canLoop,
+    clear,
+    loop,
+    loopPoints
+  };
+  return self;
+}
+function SlidesHandler(container, eventHandler, watchSlides) {
+  let mutationObserver;
+  let destroyed = false;
+  function init(emblaApi) {
+    if (!watchSlides) return;
+    function defaultCallback(mutations) {
+      for (const mutation of mutations) {
+        if (mutation.type === "childList") {
+          emblaApi.reInit();
+          eventHandler.emit("slidesChanged");
+          break;
+        }
+      }
+    }
+    mutationObserver = new MutationObserver((mutations) => {
+      if (destroyed) return;
+      if (isBoolean(watchSlides) || watchSlides(emblaApi, mutations)) {
+        defaultCallback(mutations);
+      }
+    });
+    mutationObserver.observe(container, {
+      childList: true
+    });
+  }
+  function destroy() {
+    if (mutationObserver) mutationObserver.disconnect();
+    destroyed = true;
+  }
+  const self = {
+    init,
+    destroy
+  };
+  return self;
+}
+function SlidesInView(container, slides, eventHandler, threshold) {
+  const intersectionEntryMap = {};
+  let inViewCache = null;
+  let notInViewCache = null;
+  let intersectionObserver;
+  let destroyed = false;
+  function init() {
+    intersectionObserver = new IntersectionObserver((entries) => {
+      if (destroyed) return;
+      entries.forEach((entry) => {
+        const index2 = slides.indexOf(entry.target);
+        intersectionEntryMap[index2] = entry;
+      });
+      inViewCache = null;
+      notInViewCache = null;
+      eventHandler.emit("slidesInView");
+    }, {
+      root: container.parentElement,
+      threshold
+    });
+    slides.forEach((slide) => intersectionObserver.observe(slide));
+  }
+  function destroy() {
+    if (intersectionObserver) intersectionObserver.disconnect();
+    destroyed = true;
+  }
+  function createInViewList(inView) {
+    return objectKeys(intersectionEntryMap).reduce((list, slideIndex) => {
+      const index2 = parseInt(slideIndex);
+      const {
+        isIntersecting
+      } = intersectionEntryMap[index2];
+      const inViewMatch = inView && isIntersecting;
+      const notInViewMatch = !inView && !isIntersecting;
+      if (inViewMatch || notInViewMatch) list.push(index2);
+      return list;
+    }, []);
+  }
+  function get(inView = true) {
+    if (inView && inViewCache) return inViewCache;
+    if (!inView && notInViewCache) return notInViewCache;
+    const slideIndexes = createInViewList(inView);
+    if (inView) inViewCache = slideIndexes;
+    if (!inView) notInViewCache = slideIndexes;
+    return slideIndexes;
+  }
+  const self = {
+    init,
+    destroy,
+    get
+  };
+  return self;
+}
+function SlideSizes(axis, containerRect, slideRects, slides, readEdgeGap, ownerWindow) {
+  const {
+    measureSize,
+    startEdge,
+    endEdge
+  } = axis;
+  const withEdgeGap = slideRects[0] && readEdgeGap;
+  const startGap = measureStartGap();
+  const endGap = measureEndGap();
+  const slideSizes = slideRects.map(measureSize);
+  const slideSizesWithGaps = measureWithGaps();
+  function measureStartGap() {
+    if (!withEdgeGap) return 0;
+    const slideRect = slideRects[0];
+    return mathAbs(containerRect[startEdge] - slideRect[startEdge]);
+  }
+  function measureEndGap() {
+    if (!withEdgeGap) return 0;
+    const style = ownerWindow.getComputedStyle(arrayLast(slides));
+    return parseFloat(style.getPropertyValue(`margin-${endEdge}`));
+  }
+  function measureWithGaps() {
+    return slideRects.map((rect, index2, rects) => {
+      const isFirst = !index2;
+      const isLast = arrayIsLastIndex(rects, index2);
+      if (isFirst) return slideSizes[index2] + startGap;
+      if (isLast) return slideSizes[index2] + endGap;
+      return rects[index2 + 1][startEdge] - rect[startEdge];
+    }).map(mathAbs);
+  }
+  const self = {
+    slideSizes,
+    slideSizesWithGaps,
+    startGap,
+    endGap
+  };
+  return self;
+}
+function SlidesToScroll(axis, viewSize, slidesToScroll, loop, containerRect, slideRects, startGap, endGap, pixelTolerance) {
+  const {
+    startEdge,
+    endEdge,
+    direction
+  } = axis;
+  const groupByNumber = isNumber(slidesToScroll);
+  function byNumber(array, groupSize) {
+    return arrayKeys(array).filter((i) => i % groupSize === 0).map((i) => array.slice(i, i + groupSize));
+  }
+  function bySize(array) {
+    if (!array.length) return [];
+    return arrayKeys(array).reduce((groups, rectB, index2) => {
+      const rectA = arrayLast(groups) || 0;
+      const isFirst = rectA === 0;
+      const isLast = rectB === arrayLastIndex(array);
+      const edgeA = containerRect[startEdge] - slideRects[rectA][startEdge];
+      const edgeB = containerRect[startEdge] - slideRects[rectB][endEdge];
+      const gapA = !loop && isFirst ? direction(startGap) : 0;
+      const gapB = !loop && isLast ? direction(endGap) : 0;
+      const chunkSize = mathAbs(edgeB - gapB - (edgeA + gapA));
+      if (index2 && chunkSize > viewSize + pixelTolerance) groups.push(rectB);
+      if (isLast) groups.push(array.length);
+      return groups;
+    }, []).map((currentSize, index2, groups) => {
+      const previousSize = Math.max(groups[index2 - 1] || 0);
+      return array.slice(previousSize, currentSize);
+    });
+  }
+  function groupSlides(array) {
+    return groupByNumber ? byNumber(array, slidesToScroll) : bySize(array);
+  }
+  const self = {
+    groupSlides
+  };
+  return self;
+}
+function Engine(root, container, slides, ownerDocument, ownerWindow, options, eventHandler) {
+  const {
+    align,
+    axis: scrollAxis,
+    direction,
+    startIndex,
+    loop,
+    duration,
+    dragFree,
+    dragThreshold,
+    inViewThreshold,
+    slidesToScroll: groupSlides,
+    skipSnaps,
+    containScroll,
+    watchResize,
+    watchSlides,
+    watchDrag,
+    watchFocus
+  } = options;
+  const pixelTolerance = 2;
+  const nodeRects = NodeRects();
+  const containerRect = nodeRects.measure(container);
+  const slideRects = slides.map(nodeRects.measure);
+  const axis = Axis(scrollAxis, direction);
+  const viewSize = axis.measureSize(containerRect);
+  const percentOfView = PercentOfView(viewSize);
+  const alignment = Alignment(align, viewSize);
+  const containSnaps = !loop && !!containScroll;
+  const readEdgeGap = loop || !!containScroll;
+  const {
+    slideSizes,
+    slideSizesWithGaps,
+    startGap,
+    endGap
+  } = SlideSizes(axis, containerRect, slideRects, slides, readEdgeGap, ownerWindow);
+  const slidesToScroll = SlidesToScroll(axis, viewSize, groupSlides, loop, containerRect, slideRects, startGap, endGap, pixelTolerance);
+  const {
+    snaps,
+    snapsAligned
+  } = ScrollSnaps(axis, alignment, containerRect, slideRects, slidesToScroll);
+  const contentSize = -arrayLast(snaps) + arrayLast(slideSizesWithGaps);
+  const {
+    snapsContained,
+    scrollContainLimit
+  } = ScrollContain(viewSize, contentSize, snapsAligned, containScroll, pixelTolerance);
+  const scrollSnaps = containSnaps ? snapsContained : snapsAligned;
+  const {
+    limit
+  } = ScrollLimit(contentSize, scrollSnaps, loop);
+  const index2 = Counter(arrayLastIndex(scrollSnaps), startIndex, loop);
+  const indexPrevious = index2.clone();
+  const slideIndexes = arrayKeys(slides);
+  const update = ({
+    dragHandler,
+    scrollBody: scrollBody2,
+    scrollBounds,
+    options: {
+      loop: loop2
+    }
+  }) => {
+    if (!loop2) scrollBounds.constrain(dragHandler.pointerDown());
+    scrollBody2.seek();
+  };
+  const render = ({
+    scrollBody: scrollBody2,
+    translate,
+    location: location2,
+    offsetLocation: offsetLocation2,
+    previousLocation: previousLocation2,
+    scrollLooper,
+    slideLooper,
+    dragHandler,
+    animation: animation2,
+    eventHandler: eventHandler2,
+    scrollBounds,
+    options: {
+      loop: loop2
+    }
+  }, alpha) => {
+    const shouldSettle = scrollBody2.settled();
+    const withinBounds = !scrollBounds.shouldConstrain();
+    const hasSettled = loop2 ? shouldSettle : shouldSettle && withinBounds;
+    const hasSettledAndIdle = hasSettled && !dragHandler.pointerDown();
+    if (hasSettledAndIdle) animation2.stop();
+    const interpolatedLocation = location2.get() * alpha + previousLocation2.get() * (1 - alpha);
+    offsetLocation2.set(interpolatedLocation);
+    if (loop2) {
+      scrollLooper.loop(scrollBody2.direction());
+      slideLooper.loop();
+    }
+    translate.to(offsetLocation2.get());
+    if (hasSettledAndIdle) eventHandler2.emit("settle");
+    if (!hasSettled) eventHandler2.emit("scroll");
+  };
+  const animation = Animations(ownerDocument, ownerWindow, () => update(engine), (alpha) => render(engine, alpha));
+  const friction = 0.68;
+  const startLocation = scrollSnaps[index2.get()];
+  const location = Vector1D(startLocation);
+  const previousLocation = Vector1D(startLocation);
+  const offsetLocation = Vector1D(startLocation);
+  const target = Vector1D(startLocation);
+  const scrollBody = ScrollBody(location, offsetLocation, previousLocation, target, duration, friction);
+  const scrollTarget = ScrollTarget(loop, scrollSnaps, contentSize, limit, target);
+  const scrollTo = ScrollTo(animation, index2, indexPrevious, scrollBody, scrollTarget, target, eventHandler);
+  const scrollProgress = ScrollProgress(limit);
+  const eventStore = EventStore();
+  const slidesInView = SlidesInView(container, slides, eventHandler, inViewThreshold);
+  const {
+    slideRegistry
+  } = SlideRegistry(containSnaps, containScroll, scrollSnaps, scrollContainLimit, slidesToScroll, slideIndexes);
+  const slideFocus = SlideFocus(root, slides, slideRegistry, scrollTo, scrollBody, eventStore, eventHandler, watchFocus);
+  const engine = {
+    ownerDocument,
+    ownerWindow,
+    eventHandler,
+    containerRect,
+    slideRects,
+    animation,
+    axis,
+    dragHandler: DragHandler(axis, root, ownerDocument, ownerWindow, target, DragTracker(axis, ownerWindow), location, animation, scrollTo, scrollBody, scrollTarget, index2, eventHandler, percentOfView, dragFree, dragThreshold, skipSnaps, friction, watchDrag),
+    eventStore,
+    percentOfView,
+    index: index2,
+    indexPrevious,
+    limit,
+    location,
+    offsetLocation,
+    previousLocation,
+    options,
+    resizeHandler: ResizeHandler(container, eventHandler, ownerWindow, slides, axis, watchResize, nodeRects),
+    scrollBody,
+    scrollBounds: ScrollBounds(limit, offsetLocation, target, scrollBody, percentOfView),
+    scrollLooper: ScrollLooper(contentSize, limit, offsetLocation, [location, offsetLocation, previousLocation, target]),
+    scrollProgress,
+    scrollSnapList: scrollSnaps.map(scrollProgress.get),
+    scrollSnaps,
+    scrollTarget,
+    scrollTo,
+    slideLooper: SlideLooper(axis, viewSize, contentSize, slideSizes, slideSizesWithGaps, snaps, scrollSnaps, offsetLocation, slides),
+    slideFocus,
+    slidesHandler: SlidesHandler(container, eventHandler, watchSlides),
+    slidesInView,
+    slideIndexes,
+    slideRegistry,
+    slidesToScroll,
+    target,
+    translate: Translate(axis, container)
+  };
+  return engine;
+}
+function EventHandler() {
+  let listeners2 = {};
+  let api;
+  function init(emblaApi) {
+    api = emblaApi;
+  }
+  function getListeners(evt) {
+    return listeners2[evt] || [];
+  }
+  function emit(evt) {
+    getListeners(evt).forEach((e) => e(api, evt));
+    return self;
+  }
+  function on(evt, cb) {
+    listeners2[evt] = getListeners(evt).concat([cb]);
+    return self;
+  }
+  function off(evt, cb) {
+    listeners2[evt] = getListeners(evt).filter((e) => e !== cb);
+    return self;
+  }
+  function clear() {
+    listeners2 = {};
+  }
+  const self = {
+    init,
+    emit,
+    off,
+    on,
+    clear
+  };
+  return self;
+}
+const defaultOptions$1 = {
+  align: "center",
+  axis: "x",
+  container: null,
+  slides: null,
+  containScroll: "trimSnaps",
+  direction: "ltr",
+  slidesToScroll: 1,
+  inViewThreshold: 0,
+  breakpoints: {},
+  dragFree: false,
+  dragThreshold: 10,
+  loop: false,
+  skipSnaps: false,
+  duration: 25,
+  startIndex: 0,
+  active: true,
+  watchDrag: true,
+  watchResize: true,
+  watchSlides: true,
+  watchFocus: true
+};
+function OptionsHandler(ownerWindow) {
+  function mergeOptions(optionsA, optionsB) {
+    return objectsMergeDeep(optionsA, optionsB || {});
+  }
+  function optionsAtMedia(options) {
+    const optionsAtMedia2 = options.breakpoints || {};
+    const matchedMediaOptions = objectKeys(optionsAtMedia2).filter((media) => ownerWindow.matchMedia(media).matches).map((media) => optionsAtMedia2[media]).reduce((a, mediaOption) => mergeOptions(a, mediaOption), {});
+    return mergeOptions(options, matchedMediaOptions);
+  }
+  function optionsMediaQueries(optionsList) {
+    return optionsList.map((options) => objectKeys(options.breakpoints || {})).reduce((acc, mediaQueries) => acc.concat(mediaQueries), []).map(ownerWindow.matchMedia);
+  }
+  const self = {
+    mergeOptions,
+    optionsAtMedia,
+    optionsMediaQueries
+  };
+  return self;
+}
+function PluginsHandler(optionsHandler) {
+  let activePlugins = [];
+  function init(emblaApi, plugins) {
+    activePlugins = plugins.filter(({
+      options
+    }) => optionsHandler.optionsAtMedia(options).active !== false);
+    activePlugins.forEach((plugin) => plugin.init(emblaApi, optionsHandler));
+    return plugins.reduce((map, plugin) => Object.assign(map, {
+      [plugin.name]: plugin
+    }), {});
+  }
+  function destroy() {
+    activePlugins = activePlugins.filter((plugin) => plugin.destroy());
+  }
+  const self = {
+    init,
+    destroy
+  };
+  return self;
+}
+function EmblaCarousel(root, userOptions, userPlugins) {
+  const ownerDocument = root.ownerDocument;
+  const ownerWindow = ownerDocument.defaultView;
+  const optionsHandler = OptionsHandler(ownerWindow);
+  const pluginsHandler = PluginsHandler(optionsHandler);
+  const mediaHandlers = EventStore();
+  const eventHandler = EventHandler();
+  const {
+    mergeOptions,
+    optionsAtMedia,
+    optionsMediaQueries
+  } = optionsHandler;
+  const {
+    on,
+    off,
+    emit
+  } = eventHandler;
+  const reInit = reActivate;
+  let destroyed = false;
+  let engine;
+  let optionsBase = mergeOptions(defaultOptions$1, EmblaCarousel.globalOptions);
+  let options = mergeOptions(optionsBase);
+  let pluginList = [];
+  let pluginApis;
+  let container;
+  let slides;
+  function storeElements() {
+    const {
+      container: userContainer,
+      slides: userSlides
+    } = options;
+    const customContainer = isString(userContainer) ? root.querySelector(userContainer) : userContainer;
+    container = customContainer || root.children[0];
+    const customSlides = isString(userSlides) ? container.querySelectorAll(userSlides) : userSlides;
+    slides = [].slice.call(customSlides || container.children);
+  }
+  function createEngine(options2) {
+    const engine2 = Engine(root, container, slides, ownerDocument, ownerWindow, options2, eventHandler);
+    if (options2.loop && !engine2.slideLooper.canLoop()) {
+      const optionsWithoutLoop = Object.assign({}, options2, {
+        loop: false
+      });
+      return createEngine(optionsWithoutLoop);
+    }
+    return engine2;
+  }
+  function activate(withOptions, withPlugins) {
+    if (destroyed) return;
+    optionsBase = mergeOptions(optionsBase, withOptions);
+    options = optionsAtMedia(optionsBase);
+    pluginList = withPlugins || pluginList;
+    storeElements();
+    engine = createEngine(options);
+    optionsMediaQueries([optionsBase, ...pluginList.map(({
+      options: options2
+    }) => options2)]).forEach((query) => mediaHandlers.add(query, "change", reActivate));
+    if (!options.active) return;
+    engine.translate.to(engine.location.get());
+    engine.animation.init();
+    engine.slidesInView.init();
+    engine.slideFocus.init(self);
+    engine.eventHandler.init(self);
+    engine.resizeHandler.init(self);
+    engine.slidesHandler.init(self);
+    if (engine.options.loop) engine.slideLooper.loop();
+    if (container.offsetParent && slides.length) engine.dragHandler.init(self);
+    pluginApis = pluginsHandler.init(self, pluginList);
+  }
+  function reActivate(withOptions, withPlugins) {
+    const startIndex = selectedScrollSnap();
+    deActivate();
+    activate(mergeOptions({
+      startIndex
+    }, withOptions), withPlugins);
+    eventHandler.emit("reInit");
+  }
+  function deActivate() {
+    engine.dragHandler.destroy();
+    engine.eventStore.clear();
+    engine.translate.clear();
+    engine.slideLooper.clear();
+    engine.resizeHandler.destroy();
+    engine.slidesHandler.destroy();
+    engine.slidesInView.destroy();
+    engine.animation.destroy();
+    pluginsHandler.destroy();
+    mediaHandlers.clear();
+  }
+  function destroy() {
+    if (destroyed) return;
+    destroyed = true;
+    mediaHandlers.clear();
+    deActivate();
+    eventHandler.emit("destroy");
+    eventHandler.clear();
+  }
+  function scrollTo(index2, jump, direction) {
+    if (!options.active || destroyed) return;
+    engine.scrollBody.useBaseFriction().useDuration(jump === true ? 0 : options.duration);
+    engine.scrollTo.index(index2, direction || 0);
+  }
+  function scrollNext(jump) {
+    const next = engine.index.add(1).get();
+    scrollTo(next, jump, -1);
+  }
+  function scrollPrev(jump) {
+    const prev = engine.index.add(-1).get();
+    scrollTo(prev, jump, 1);
+  }
+  function canScrollNext() {
+    const next = engine.index.add(1).get();
+    return next !== selectedScrollSnap();
+  }
+  function canScrollPrev() {
+    const prev = engine.index.add(-1).get();
+    return prev !== selectedScrollSnap();
+  }
+  function scrollSnapList() {
+    return engine.scrollSnapList;
+  }
+  function scrollProgress() {
+    return engine.scrollProgress.get(engine.offsetLocation.get());
+  }
+  function selectedScrollSnap() {
+    return engine.index.get();
+  }
+  function previousScrollSnap() {
+    return engine.indexPrevious.get();
+  }
+  function slidesInView() {
+    return engine.slidesInView.get();
+  }
+  function slidesNotInView() {
+    return engine.slidesInView.get(false);
+  }
+  function plugins() {
+    return pluginApis;
+  }
+  function internalEngine() {
+    return engine;
+  }
+  function rootNode() {
+    return root;
+  }
+  function containerNode() {
+    return container;
+  }
+  function slideNodes() {
+    return slides;
+  }
+  const self = {
+    canScrollNext,
+    canScrollPrev,
+    containerNode,
+    internalEngine,
+    destroy,
+    off,
+    on,
+    emit,
+    plugins,
+    previousScrollSnap,
+    reInit,
+    rootNode,
+    scrollNext,
+    scrollPrev,
+    scrollProgress,
+    scrollSnapList,
+    scrollTo,
+    selectedScrollSnap,
+    slideNodes,
+    slidesInView,
+    slidesNotInView
+  };
+  activate(userOptions, userPlugins);
+  setTimeout(() => eventHandler.emit("init"), 0);
+  return self;
+}
+EmblaCarousel.globalOptions = void 0;
+function useEmblaCarousel(options = {}, plugins = []) {
+  const storedOptions = reactExports.useRef(options);
+  const storedPlugins = reactExports.useRef(plugins);
+  const [emblaApi, setEmblaApi] = reactExports.useState();
+  const [viewport, setViewport] = reactExports.useState();
+  const reInit = reactExports.useCallback(() => {
+    if (emblaApi) emblaApi.reInit(storedOptions.current, storedPlugins.current);
+  }, [emblaApi]);
+  reactExports.useEffect(() => {
+    if (areOptionsEqual(storedOptions.current, options)) return;
+    storedOptions.current = options;
+    reInit();
+  }, [options, reInit]);
+  reactExports.useEffect(() => {
+    if (arePluginsEqual(storedPlugins.current, plugins)) return;
+    storedPlugins.current = plugins;
+    reInit();
+  }, [plugins, reInit]);
+  reactExports.useEffect(() => {
+    if (canUseDOM() && viewport) {
+      EmblaCarousel.globalOptions = useEmblaCarousel.globalOptions;
+      const newEmblaApi = EmblaCarousel(viewport, storedOptions.current, storedPlugins.current);
+      setEmblaApi(newEmblaApi);
+      return () => newEmblaApi.destroy();
+    } else {
+      setEmblaApi(void 0);
+    }
+  }, [viewport, setEmblaApi]);
+  return [setViewport, emblaApi];
+}
+useEmblaCarousel.globalOptions = void 0;
+const defaultOptions = {
+  active: true,
+  breakpoints: {},
+  delay: 4e3,
+  jump: false,
+  playOnInit: true,
+  stopOnFocusIn: true,
+  stopOnInteraction: true,
+  stopOnMouseEnter: false,
+  stopOnLastSnap: false,
+  rootNode: null
+};
+function normalizeDelay(emblaApi, delay) {
+  const scrollSnaps = emblaApi.scrollSnapList();
+  if (typeof delay === "number") {
+    return scrollSnaps.map(() => delay);
+  }
+  return delay(scrollSnaps, emblaApi);
+}
+function getAutoplayRootNode(emblaApi, rootNode) {
+  const emblaRootNode = emblaApi.rootNode();
+  return rootNode && rootNode(emblaRootNode) || emblaRootNode;
+}
+function Autoplay(userOptions = {}) {
+  let options;
+  let emblaApi;
+  let destroyed;
+  let delay;
+  let timerStartTime = null;
+  let timerId = 0;
+  let autoplayActive = false;
+  let mouseIsOver = false;
+  let playOnDocumentVisible = false;
+  let jump = false;
+  function init(emblaApiInstance, optionsHandler) {
+    emblaApi = emblaApiInstance;
+    const {
+      mergeOptions,
+      optionsAtMedia
+    } = optionsHandler;
+    const optionsBase = mergeOptions(defaultOptions, Autoplay.globalOptions);
+    const allOptions = mergeOptions(optionsBase, userOptions);
+    options = optionsAtMedia(allOptions);
+    if (emblaApi.scrollSnapList().length <= 1) return;
+    jump = options.jump;
+    destroyed = false;
+    delay = normalizeDelay(emblaApi, options.delay);
+    const {
+      eventStore,
+      ownerDocument
+    } = emblaApi.internalEngine();
+    const isDraggable = !!emblaApi.internalEngine().options.watchDrag;
+    const root = getAutoplayRootNode(emblaApi, options.rootNode);
+    eventStore.add(ownerDocument, "visibilitychange", visibilityChange);
+    if (isDraggable) {
+      emblaApi.on("pointerDown", pointerDown);
+    }
+    if (isDraggable && !options.stopOnInteraction) {
+      emblaApi.on("pointerUp", pointerUp);
+    }
+    if (options.stopOnMouseEnter) {
+      eventStore.add(root, "mouseenter", mouseEnter);
+    }
+    if (options.stopOnMouseEnter && !options.stopOnInteraction) {
+      eventStore.add(root, "mouseleave", mouseLeave);
+    }
+    if (options.stopOnFocusIn) {
+      emblaApi.on("slideFocusStart", stopAutoplay);
+    }
+    if (options.stopOnFocusIn && !options.stopOnInteraction) {
+      eventStore.add(emblaApi.containerNode(), "focusout", startAutoplay);
+    }
+    if (options.playOnInit) startAutoplay();
+  }
+  function destroy() {
+    emblaApi.off("pointerDown", pointerDown).off("pointerUp", pointerUp).off("slideFocusStart", stopAutoplay);
+    stopAutoplay();
+    destroyed = true;
+    autoplayActive = false;
+  }
+  function setTimer() {
+    const {
+      ownerWindow
+    } = emblaApi.internalEngine();
+    ownerWindow.clearTimeout(timerId);
+    timerId = ownerWindow.setTimeout(next, delay[emblaApi.selectedScrollSnap()]);
+    timerStartTime = (/* @__PURE__ */ new Date()).getTime();
+    emblaApi.emit("autoplay:timerset");
+  }
+  function clearTimer() {
+    const {
+      ownerWindow
+    } = emblaApi.internalEngine();
+    ownerWindow.clearTimeout(timerId);
+    timerId = 0;
+    timerStartTime = null;
+    emblaApi.emit("autoplay:timerstopped");
+  }
+  function startAutoplay() {
+    if (destroyed) return;
+    if (documentIsHidden()) {
+      playOnDocumentVisible = true;
+      return;
+    }
+    if (!autoplayActive) emblaApi.emit("autoplay:play");
+    setTimer();
+    autoplayActive = true;
+  }
+  function stopAutoplay() {
+    if (destroyed) return;
+    if (autoplayActive) emblaApi.emit("autoplay:stop");
+    clearTimer();
+    autoplayActive = false;
+  }
+  function visibilityChange() {
+    if (documentIsHidden()) {
+      playOnDocumentVisible = autoplayActive;
+      return stopAutoplay();
+    }
+    if (playOnDocumentVisible) startAutoplay();
+  }
+  function documentIsHidden() {
+    const {
+      ownerDocument
+    } = emblaApi.internalEngine();
+    return ownerDocument.visibilityState === "hidden";
+  }
+  function pointerDown() {
+    if (!mouseIsOver) stopAutoplay();
+  }
+  function pointerUp() {
+    if (!mouseIsOver) startAutoplay();
+  }
+  function mouseEnter() {
+    mouseIsOver = true;
+    stopAutoplay();
+  }
+  function mouseLeave() {
+    mouseIsOver = false;
+    startAutoplay();
+  }
+  function play(jumpOverride) {
+    if (typeof jumpOverride !== "undefined") jump = jumpOverride;
+    startAutoplay();
+  }
+  function stop() {
+    if (autoplayActive) stopAutoplay();
+  }
+  function reset() {
+    if (autoplayActive) startAutoplay();
+  }
+  function isPlaying() {
+    return autoplayActive;
+  }
+  function next() {
+    const {
+      index: index2
+    } = emblaApi.internalEngine();
+    const nextIndex = index2.clone().add(1).get();
+    const lastIndex = emblaApi.scrollSnapList().length - 1;
+    const kill = options.stopOnLastSnap && nextIndex === lastIndex;
+    if (emblaApi.canScrollNext()) {
+      emblaApi.scrollNext(jump);
+    } else {
+      emblaApi.scrollTo(0, jump);
+    }
+    emblaApi.emit("autoplay:select");
+    if (kill) return stopAutoplay();
+    startAutoplay();
+  }
+  function timeUntilNext() {
+    if (!timerStartTime) return null;
+    const currentDelay = delay[emblaApi.selectedScrollSnap()];
+    const timePastSinceStart = (/* @__PURE__ */ new Date()).getTime() - timerStartTime;
+    return currentDelay - timePastSinceStart;
+  }
+  const self = {
+    name: "autoplay",
+    options: userOptions,
+    init,
+    destroy,
+    play,
+    stop,
+    reset,
+    isPlaying,
+    timeUntilNext
+  };
+  return self;
+}
+Autoplay.globalOptions = void 0;
+function Carousel({
+  autoplay = false,
+  delay = 4e3,
+  loop = true,
+  className,
+  children
+}) {
+  const autoplayPlugin = reactExports.useMemo(
+    () => autoplay ? Autoplay({
+      delay,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true
+    }) : void 0,
+    [autoplay, delay]
+  );
+  const [viewportRef, embla] = useEmblaCarousel(
+    {
+      loop,
+      align: "start",
+      containScroll: "trimSnaps"
+    },
+    autoplayPlugin ? [autoplayPlugin] : []
+  );
+  const [canPrev, setCanPrev] = reactExports.useState(false);
+  const [canNext, setCanNext] = reactExports.useState(false);
+  const updateButtons = reactExports.useCallback(() => {
+    if (!embla) return;
+    setCanPrev(embla.canScrollPrev());
+    setCanNext(embla.canScrollNext());
+  }, [embla]);
+  reactExports.useEffect(() => {
+    if (!embla) return;
+    updateButtons();
+    embla.on("select", updateButtons);
+    embla.on("reInit", updateButtons);
+  }, [embla, updateButtons]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: cn("relative w-full", className), children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref: viewportRef, className: "overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex", children }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Button,
+      {
+        size: "icon",
+        variant: "outline",
+        className: "absolute left-2 top-1/2 -translate-y-1/2 z-10",
+        onClick: () => embla == null ? void 0 : embla.scrollPrev(),
+        disabled: !canPrev,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { className: "h-4 w-4" })
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Button,
+      {
+        size: "icon",
+        variant: "outline",
+        className: "absolute right-2 top-1/2 -translate-y-1/2 z-10",
+        onClick: () => embla == null ? void 0 : embla.scrollNext(),
+        disabled: !canNext,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "h-4 w-4" })
+      }
+    )
+  ] });
+}
+function CarouselItem({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      className: cn("min-w-full shrink-0 grow-0", className),
+      ...props
+    }
+  );
+}
+function LandingPage() {
+  const [announcements, setAnnouncements] = reactExports.useState([]);
+  reactExports.useEffect(() => {
+    fetchAnnouncements();
+  }, []);
+  const convert = (data) => {
+    return data.map((item2) => ({
+      image: item2.imageUrl || "https://via.placeholder.com/400x200?text=No+Image",
+      title: item2.title,
+      date: new Date(item2.createdAt).toLocaleDateString(),
+      author: item2.createdBy || "Unknown",
+      content: item2.content
+    }));
+  };
+  const fetchAnnouncements = async () => {
+    const response = await backend.announcement.list();
+    setAnnouncements(convert(response.announcements));
+  };
+  const heroImages = [
+    "/images/4.jpg",
+    "/images/2.jpg",
+    "/images/1.jpg"
+  ];
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col min-h-screen bg-slate-50 text-slate-900 font-sans", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 h-20 flex items-center justify-between", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "/", className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "https://i.ibb.co/dyTvpky/2.png", className: "h-12 w-auto", alt: "logo" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-black tracking-tight text-slate-800 leading-none", children: "NO-HE" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] uppercase tracking-widest text-primary font-bold", children: "Cement Investment" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center gap-8", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#about", className: "text-sm font-semibold hover:text-primary transition-colors", children: "About" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#announcements", className: "text-sm font-semibold hover:text-primary transition-colors", children: "Announcements" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#contact", className: "text-sm font-semibold hover:text-primary transition-colors", children: "Contact" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "a",
+          {
+            href: "/login",
+            className: "flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-primary transition-all shadow-md active:scale-95",
+            children: [
+              "Inventory Login ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(FaArrowRight, { className: "text-xs" })
+            ]
+          }
+        )
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "flex-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { className: "relative h-[85vh] overflow-hidden bg-black", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 opacity-60", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Carousel, { autoplay: true, delay: 3e3, className: "h-full w-full", children: heroImages.map((src, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(CarouselItem, { className: "h-[85vh] w-full", children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src, alt: `Slide ${i}`, className: "w-full h-full object-cover" }) }, i)) }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-start", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl space-y-6", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block px-4 py-1.5 rounded-full bg-primary/20 text-white border border-white/30 text-xs font-bold uppercase tracking-widest backdrop-blur-sm", children: "Establishing Foundations since 2010" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-5xl md:text-7xl font-black text-white leading-[1.1]", children: [
+            "Nohi Cement Products Investment ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-warning", children: "Arbaminch" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-lg text-slate-200 max-w-xl leading-relaxed", children: "Premium cement products and construction solutions engineered for durability, reliability, and sustainable growth." }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-4 pt-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "px-8 py-4 bg-primary text-white font-bold rounded-lg shadow-lg hover:brightness-110 transition-all", children: "Explore Products" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("button", { className: "px-8 py-4 bg-white/10 text-white font-bold rounded-lg backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all", children: "View Projects" })
+          ] })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "announcements", className: "py-24 container mx-auto px-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-sm", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(FaNewspaper, {}),
+              " ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Latest Updates" })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "text-4xl font-black text-slate-800", children: "Company Announcements" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-slate-500 max-w-md", children: "Stay informed with the latest news, project milestones, and corporate updates from NO-HE Investment." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8", children: announcements.map((post, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative h-56 overflow-hidden", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "img",
+              {
+                src: post.image,
+                alt: post.title,
+                className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-[10px] font-black uppercase text-slate-800", children: "News" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-6 space-y-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4 text-xs font-medium text-slate-500", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(FaCalendarAlt, {}),
+                " ",
+                post.date
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(FaUser, {}),
+                " ",
+                post.author
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-xl font-bold text-slate-800 group-hover:text-primary transition-colors leading-tight", children: post.title }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-slate-600 text-sm line-clamp-3 leading-relaxed", children: post.content }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("button", { className: "text-primary font-bold text-sm flex items-center gap-2 pt-2 group-hover:gap-4 transition-all", children: [
+              "Read More ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(FaArrowRight, {})
+            ] })
+          ] })
+        ] }, idx)) })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { id: "contact", className: "bg-slate-900 text-slate-300 pt-20 pb-10", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-4 gap-12 mb-16", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "col-span-1 md:col-span-1 space-y-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: "https://i.ibb.co/dyTvpky/2.png", className: "h-10 w-auto", alt: "logo" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xl font-black tracking-tight", children: "NO-HE" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm leading-relaxed text-slate-400", children: "Leading the way in construction material innovation across Ethiopia since 2010. Excellence in every ton." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 hidden", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { className: "text-white font-bold text-lg", children: "Quick Links" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("ul", { className: "space-y-2 text-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "hover:text-primary transition-colors", children: "Corporate Profile" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "hover:text-primary transition-colors", children: "Product Catalogue" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "hover:text-primary transition-colors", children: "Sustainability" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "/login", className: "hover:text-primary transition-colors text-primary font-bold", children: "Inventory Portal" }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h4", { className: "text-white font-bold text-lg", children: "Contact Details" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("ul", { className: "space-y-4 text-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(FaMapMarkerAlt, { className: "mt-1 text-primary" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+              "Sikela Adebabay, Arba Minch,",
+              /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+              " Gamo Zone, Ethiopia"
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(FaPhoneAlt, { className: "text-primary" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "+251 988 05 09 71" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(FaEnvelope, { className: "text-primary" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "info@nohe-investment.com" })
+          ] })
+        ] })
+      ] })
+    ] }) }) })
+  ] });
+}
 function AppInner() {
   const { user: currentUser, logout } = useAuth();
-  if (!currentUser) {
+  const currentPath = window.location.pathname;
+  if (currentPath === "/login" && !currentUser) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx(LoginPage, {});
+  }
+  if (currentPath === "/") {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(LandingPage, {});
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "dark min-h-screen bg-background", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Dashboard, { currentUser, onLogout: () => logout() }),
